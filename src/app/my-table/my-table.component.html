@@ -1,0 +1,24 @@
+
+
+
+<input list="key" [(ngModel)]="key" placeholder="seleziona il campo">
+<datalist id="key" >
+  <option *ngFor="let item of tableConfig.headers" value="{{item.key}}">
+</datalist>
+<input type="text" [(ngModel)]= "element" (input)="searchElement(key,element)">
+
+
+<table class="table">
+  <thead>
+  <tr>
+    <th *ngFor="let item of tableConfig.headers" (click)="sortTable(item.key)">{{item.label}}</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let elem of filterData | pagination:pageinator.currentPage">
+    <td *ngFor="let field of tableConfig.headers">{{elem[field.key]}} </td>
+  </tr>
+  </tbody>
+</table>
+
+<hello [page]="data.length" #pageinator></hello>
