@@ -1,24 +1,76 @@
 
+<div class="container">
+
+      <div>
+      <h5>Seleziona il campo di Ricerca</h5>
+      <select [(ngModel)]="key">
+        <option *ngFor="let item of tableConfig.headers"
+                value="{{item.key}}">{{item.label}}
+        </option>
+      </select>
+      <h5>Testo da cercare</h5>
+      <input type="text" [(ngModel)]="element" (input)="searchElement(key,element)" placeholder="Cerca">
+      </div>
+  <br>
+     <div *ngFor="let button of tableConfig.action">
+     <div *ngIf="button.action == 'add'" >
+      <app-my-button [buttonConfig]="button" (eventEmitter)="buttonClicked(button.action,'')"></app-my-button>
+     </div>
+     </div>
+  <br>
 
 
-<input list="key" [(ngModel)]="key" placeholder="seleziona il campo">
-<datalist id="key" >
-  <option *ngFor="let item of tableConfig.headers" value="{{item.key}}">
-</datalist>
-<input type="text" [(ngModel)]= "element" (input)="searchElement(key,element)">
 
 
-<table class="table">
-  <thead>
-  <tr>
-    <th *ngFor="let item of tableConfig.headers" (click)="sortTable(item.key)">{{item.label}}</th>
-  </tr>
-  </thead>
-  <tbody>
-  <tr *ngFor="let elem of filterData | pagination:pageinator.currentPage">
-    <td *ngFor="let field of tableConfig.headers">{{elem[field.key]}} </td>
-  </tr>
-  </tbody>
-</table>
+    <table class="table">
+    <thead>
+    <tr>
+      <th *ngFor="let elem of tableConfig.headers"
+          (click)="sortTable(elem.key)">{{elem.label}}
+      </th>
+    </tr>
+    </thead>
+    <tbody>
 
-<hello [page]="data.length" #pageinator></hello>
+    <tr *ngFor="let elem of filterData | slice : (currentPage1 -1) * elementForPage : elementForPage * currentPage1">
+        <td *ngFor="let head of tableConfig.headers">
+          <span>{{elem[head.key]}}</span>
+      </td>
+      <td *ngFor="let button of tableConfig.action">
+        <div *ngIf="button.action != 'add'" >
+        <app-my-button [buttonConfig]="button" (eventEmitter)="buttonClicked(button.action,elem)"></app-my-button>
+        </div>
+      </td>
+    </tr>
+    </tbody>
+    </table>
+
+    <div class="row">
+    <div>
+        <button
+          (click)="currentPage(currentPage1 - 1)"
+          [hidden]="!(currentPage1 > 1)">Pagina Precedente
+        </button>
+      <div>
+        <select
+          [(ngModel)]="elementForPage"
+          (ngModelChange)="setElement(elementForPage)">
+          <option *ngFor="let elem of tableConfig.pagination.itemForPageOptions" value="{{elem}}">{{elem}}</option>
+        </select>
+      </div>
+        <button
+          (click)="currentPage(currentPage1 + 1)"
+          [hidden]="!(currentPage1 < totalNumberPages)">Pagina Successiva
+        </button>
+    </div>
+      <div>
+        Numero pagina: {{currentPage1}}  Elementi per Pagina: {{elementForPage}}
+      </div>
+  </div>
+  </div>
+
+
+
+
+
+

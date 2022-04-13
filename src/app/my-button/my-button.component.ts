@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import { MyButtonConfig } from '../config/button/MyButtonConfig';
 
 @Component({
@@ -12,9 +12,15 @@ export class MyButtonComponent implements OnInit {
 
   @Input() buttonConfig!: MyButtonConfig;
 
+  @Output() eventEmitter = new EventEmitter<any>();
+
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  buttonClicked(action: string): void {
+    this.eventEmitter.emit(action);
   }
 
 

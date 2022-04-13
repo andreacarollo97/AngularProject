@@ -1,3 +1,4 @@
+import {MyButtonConfig} from "../button/MyButtonConfig";
 
 export interface MyHeaders {
   key : string;
@@ -18,9 +19,15 @@ export interface MyTableConfig {
   order : MyOrder;
   search : MySearch ;
   pagination : MyPagination;
+  action : MyButtonConfig[];
 }
 
 export class MyPagination {
   itemForPage !: number;
   itemForPageOptions !: number[];
 }
+
+export enum MyTableActionEnum {
+  ADD , EDIT, DELETE
+}
+

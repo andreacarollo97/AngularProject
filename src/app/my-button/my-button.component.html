@@ -1,1 +1,2 @@
-<button class="{{buttonConfig.customCssClass}}"><span class="{{buttonConfig.icon}}"></span>{{buttonConfig.text}}</button>
+<button class="{{buttonConfig.customCssClass}}" (click)="buttonClicked(buttonConfig.action)">
+  <span class="{{buttonConfig.icon}}"></span>{{buttonConfig.text}}</button>

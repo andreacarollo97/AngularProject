@@ -1,0 +1,13 @@
+<div class= container *ngIf="user">
+  <h2>Dati dell'utente: <b>{{user.nome}} {{user.cognome}}</b></h2>
+  <div>
+
+    <input [(ngModel)]="user.nome" placeholder="nome"/><br>
+    <input [(ngModel)]="user.cognome" placeholder="cognome"/><br>
+    <input [(ngModel)]="user.email" placeholder="username"/><br>
+    <input [(ngModel)]="user.password" placeholder="password"/>
+  </div>
+  <button (click)="goBack()">Annulla</button>
+  <button (click)="save()">Salva</button>
+</div>
+
