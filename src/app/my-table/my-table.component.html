@@ -4,7 +4,7 @@
       <div>
       <h5>Seleziona il campo di Ricerca</h5>
       <select [(ngModel)]="key">
-        <option *ngFor="let item of tableConfig.headers"
+        <option *ngFor="let item of tableConfig.headers "
                 value="{{item.key}}">{{item.label}}
         </option>
       </select>
@@ -13,7 +13,7 @@
       </div>
   <br>
      <div *ngFor="let button of tableConfig.action">
-     <div *ngIf="button.action == 'add'" >
+     <div *ngIf="button.position == 'top'" >
       <app-my-button [buttonConfig]="button" (eventEmitter)="buttonClicked(button.action,'')"></app-my-button>
      </div>
      </div>
@@ -37,7 +37,7 @@
           <span>{{elem[head.key]}}</span>
       </td>
       <td *ngFor="let button of tableConfig.action">
-        <div *ngIf="button.action != 'add'" >
+        <div *ngIf="button.position == 'onRow'" >
         <app-my-button [buttonConfig]="button" (eventEmitter)="buttonClicked(button.action,elem)"></app-my-button>
         </div>
       </td>

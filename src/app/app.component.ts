@@ -1,6 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {MyTableConfig} from "./config/table/MyTableConfig";
-import {configUser} from "./config/user/configUser";
+import {configUser} from "./config/page/configUser";
 
 
 @Component({

@@ -3,4 +3,5 @@ export interface MyButtonConfig {
   text : string;
   icon : string;
   action : string;
+  position : string;
 }

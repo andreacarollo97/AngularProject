@@ -1,0 +1,16 @@
+<div class= container>
+  <h2>Dati dell'auto: Marca: <b>{{auto.marca}}</b> Modello: <b>{{auto.modello}}</b></h2>
+  <div>
+    <input [(ngModel)]="auto.marca" placeholder="marca"/><br>
+    <input [(ngModel)]="auto.modello" placeholder="modello"/><br>
+    <input [(ngModel)]="auto.targa" placeholder="targa"/><br>
+  </div>
+  <div *ngIf="auto.id" >
+    <button (click)="goBack()">Annulla</button>
+    <button (click)="save()">Salva</button>
+  </div>
+  <div *ngIf="!auto.id" >
+    <button (click)="goBack()">Annulla</button>
+    <button (click)="add()">Aggiungi</button>
+  </div>
+</div>

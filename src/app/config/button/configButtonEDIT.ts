@@ -5,5 +5,6 @@ export const configButtonEDIT : MyButtonConfig = {
   customCssClass: 'btn',
   text: 'EDIT',
   icon: '',
-  action : 'edit'
+  action : 'edit',
+  position : 'onRow'
 }

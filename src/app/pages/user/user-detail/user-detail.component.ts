@@ -14,6 +14,9 @@ export class UserDetailComponent implements OnInit {
   user !: User;
   users : User[] = [];
 
+
+
+
   constructor(
     private route: ActivatedRoute,
     private service: UsersService,
@@ -27,8 +30,13 @@ export class UserDetailComponent implements OnInit {
 
   getUser(): void {
     const id = this.route.snapshot.paramMap.get('id');
-    this.service.getUser(Number(id))
-      .subscribe(user => this.user = user);
+    if (id) {
+      this.service.getUser(Number(id))
+        .subscribe(user => this.user = user);
+    }
+    else {
+      this.user = {id : undefined, nome : '', cognome : '', email : '', password : ''}
+    }
   }
 
   goBack(): void {
@@ -43,11 +51,10 @@ export class UserDetailComponent implements OnInit {
   }
 
   add(): void {
-    if (this.user) {
       this.service.addUser(this.user)
         .subscribe(user => {
           this.users.push(user);
         });
+      this.goBack()
     }
-  }
 }

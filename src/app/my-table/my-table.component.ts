@@ -1,6 +1,7 @@
 import {Component, EventEmitter, Input, OnChanges, OnInit, Output} from '@angular/core';
 import {MyTableConfig} from '../config/table/MyTableConfig';
 import * as _ from "lodash";
+import {User} from "../model/user";
 
 
 @Component({
@@ -31,21 +32,23 @@ export class MyTableComponent implements OnInit {
   elementForPage!: number;
 
 
+
+
+
   constructor() {
 
   }
 
   ngOnInit(): void{
-
+    this.elementForPage = this.tableConfig.pagination.itemForPage
   }
 
   ngOnChanges(): void {
     this.orderStatus = this.tableConfig.order.orderType === 'asc'
-    this.sortTable(this.tableConfig.order.defaultColumn)
     this.filterData = this.data
     this.key = this.tableConfig.order.defaultColumn
-    this.elementForPage = this.tableConfig.pagination.itemForPage
     this.totalNumberPages = _.ceil(this.data.length / this.elementForPage);
+    this.setElement(this.elementForPage);
   }
 
   sortTable(column: string): void {
@@ -90,7 +93,8 @@ export class MyTableComponent implements OnInit {
 
   setElement(elementForPage1: number): void {
     this.elementForPage = elementForPage1;
-    this.currentPage(1)
+    this.currentPage(1);
+
     this.totalNumberPages = _.ceil(this.data.length / this.elementForPage);
   }
 
@@ -98,5 +102,6 @@ export class MyTableComponent implements OnInit {
     const eventClicked = {item: data, action: event};
     this.eventEmitter.emit(eventClicked);
   }
+
 
 }

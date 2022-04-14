@@ -1,9 +1,9 @@
 export interface Prenotazione {
-  id: number;
+  id ?: number;
   dataInizio: string;
   dataFine: string;
-  stato: number;
-  auto_id: number;
-  user_id: number;
+  stato : number;
+  auto_id ?: number;
+  user_id ?: number;
 
 }

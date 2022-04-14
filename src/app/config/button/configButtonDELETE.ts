@@ -5,5 +5,6 @@ export const configButtonDELETE: MyButtonConfig = {
   customCssClass: 'btn',
   text: 'DELETE',
   icon: '',
-  action : 'delete'
+  action : 'delete',
+  position : 'onRow'
 }

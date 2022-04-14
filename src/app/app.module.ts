@@ -9,12 +9,15 @@ import { FormsModule } from "@angular/forms";
 import { AppRoutingModule } from './app-routing.module';
 import { HeaderComponent } from './header/header.component';
 import { UserPageComponent } from './pages/user/user-page/user-page.component';
-import { PrenotazionePageComponent } from './pages/prenotazione-page/prenotazione-page.component';
-import { AutoPageComponent } from './pages/auto-page/auto-page.component';
+import { PrenotazionePageComponent } from './pages/prenotazione/prenotazione-page/prenotazione-page.component';
+
 import { HomePageComponent } from './pages/home-page/home-page.component';
 import { UserDetailComponent } from './pages/user/user-detail/user-detail.component';
 import {HttpClientInMemoryWebApiModule} from "angular-in-memory-web-api";
 import {InMemoryDataService} from "./in-memory-data.service";
+import {AutoPageComponent} from "./pages/auto/auto-page/auto-page.component";
+import {AutoDetailComponent} from "./pages/auto/auto-detail/auto-detail.component";
+import { PrenotazioneDetailComponent } from './pages/prenotazione/prenotazione-detail/prenotazione-detail.component';
 
 
 
@@ -32,6 +35,8 @@ import {InMemoryDataService} from "./in-memory-data.service";
     AutoPageComponent,
     HomePageComponent,
     UserDetailComponent,
+    AutoDetailComponent,
+    PrenotazioneDetailComponent,
   ],
   imports: [
     BrowserModule,
