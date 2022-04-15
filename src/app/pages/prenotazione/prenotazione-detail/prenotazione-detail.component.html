@@ -1,17 +1,15 @@
+
 <div class= container>
-  <div>
-    <input type="date" [(ngModel)]="prenotazione.dataInizio" placeholder="data di Inizio prenotazione"/><br>
-    <input type="date" [(ngModel)]="prenotazione.dataFine" placeholder="data di Fine prenotazione"/><br>
-    <input [(ngModel)]="prenotazione.stato" placeholder="stato"/><br>
-    <input [(ngModel)]="prenotazione.user_id" placeholder="userID"/><br>
-    <input [(ngModel)]="prenotazione.auto_id" placeholder="autoID"/><br>
-  </div>
-  <div *ngIf="prenotazione.id" >
-    <button (click)="goBack()">Annulla</button>
-    <button (click)="save()">Salva</button>
-  </div>
-  <div *ngIf="!prenotazione.id" >
-    <button (click)="goBack()">Annulla</button>
-    <button (click)="add()">Aggiungi</button>
-  </div>
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <input type="date" name="dataInizio" formControlName="dataInizio"/><br>
+    <input type="date" name="dataFine" formControlName="dataFine"/><br>
+    <input type="text" name="stato"  placeholder="stato" formControlName="stato"/><br>
+    <input type="text" name="auto_id"  placeholder="auto_id"  formControlName="auto_id"/><br>
+    <input type="text" name="user_id"  placeholder="user_id"  formControlName="user_id"/>
+    <div>
+      <button (click)="goBack()">Annulla</button>
+      <button type="submit" [disabled]="!form.valid">Submit</button>
+    </div>
+  </form>
 </div>
+

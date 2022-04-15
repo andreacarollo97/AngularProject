@@ -5,7 +5,7 @@ import { AppComponent } from './app.component';
 import { MyButtonComponent } from './my-button/my-button.component';
 import { MyTableComponent } from './my-table/my-table.component';
 import { HttpClientModule } from "@angular/common/http";
-import { FormsModule } from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { AppRoutingModule } from './app-routing.module';
 import { HeaderComponent } from './header/header.component';
 import { UserPageComponent } from './pages/user/user-page/user-page.component';
@@ -18,8 +18,7 @@ import {InMemoryDataService} from "./in-memory-data.service";
 import {AutoPageComponent} from "./pages/auto/auto-page/auto-page.component";
 import {AutoDetailComponent} from "./pages/auto/auto-detail/auto-detail.component";
 import { PrenotazioneDetailComponent } from './pages/prenotazione/prenotazione-detail/prenotazione-detail.component';
-
-
+import { LoginPageComponent } from './pages/login/login-page/login-page.component';
 
 
 
@@ -37,16 +36,18 @@ import { PrenotazioneDetailComponent } from './pages/prenotazione/prenotazione-d
     UserDetailComponent,
     AutoDetailComponent,
     PrenotazioneDetailComponent,
+    LoginPageComponent,
   ],
-  imports: [
-    BrowserModule,
-    HttpClientModule,
-    FormsModule,
-    AppRoutingModule,
-    HttpClientInMemoryWebApiModule.forRoot(
-      InMemoryDataService, { dataEncapsulation: false }
-    )
-  ],
+    imports: [
+        BrowserModule,
+        HttpClientModule,
+        FormsModule,
+        AppRoutingModule,
+        HttpClientInMemoryWebApiModule.forRoot(
+            InMemoryDataService, {dataEncapsulation: false}
+        ),
+        ReactiveFormsModule
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })

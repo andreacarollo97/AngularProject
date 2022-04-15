@@ -8,18 +8,18 @@ import { InMemoryDbService } from 'angular-in-memory-web-api';
 export class InMemoryDataService implements InMemoryDbService {
   createDb() {
     const users = [
-      { id: 1, nome: 'Andrea', cognome: 'Carollo', email:'anca@gmail.com', password:'ac123'},
-      { id: 2, nome: 'Manuel', cognome: 'Tocchi', email:'mato@gmail.com' },
-      { id: 3, nome: 'Fabio', cognome: 'Hu', email:'fahu@gmail.com' },
-      { id: 4, nome: 'Lorenzo', cognome: 'Verdi', email:'love@gmail.com' },
-      { id: 5, nome: 'Alessia', cognome: 'Blu', email:'albl@gmail.com' },
-      { id: 6, nome: 'Giada', cognome: 'Mosca', email:'gimo@gmail.com' },
-      { id: 7, nome: 'Anna', cognome: 'Cane', email:'anca@gmail.com' },
-      { id: 8, nome: 'Mirko', cognome: 'Petrulli', email:'mp3@gmail.com' },
-      { id: 9, nome: 'Stefano', cognome: 'Di Maio', email:'stm@gmail.com' },
-      { id: 10, nome: 'Giulio', cognome: 'Patti', email:'giup@gmail.com' },
-      { id: 11, nome: 'Davide', cognome: 'Rossi', email:'drossi@gmail.com' },
-      { id: 12, nome: 'Mattia', cognome: 'Cucuzza', email:'macu@gmail.com' }
+      { id: 1, nome: 'Andrea', cognome: 'Carollo', email:'anca@gmail.com', password:'ac12345'},
+      { id: 2, nome: 'Manuel', cognome: 'Tocchi', email:'mato@gmail.com',password:'dfhdfh3' },
+      { id: 3, nome: 'Fabio', cognome: 'Hu', email:'fahu@gmail.com',password:'7fwe9f7' },
+      { id: 4, nome: 'Lorenzo', cognome: 'Verdi', email:'love@gmail.com',password:'53t5f6f35' },
+      { id: 5, nome: 'Alessia', cognome: 'Blu', email:'albl@gmail.com',password:'d4353d4d5' },
+      { id: 6, nome: 'Giada', cognome: 'Mosca', email:'gimo@gmail.com',password:'b77644x42' },
+      { id: 7, nome: 'Anna', cognome: 'Cane', email:'anca@gmail.com',password:'as09dqwg982' },
+      { id: 8, nome: 'Mirko', cognome: 'Petrulli', email:'mp3@gmail.com',password:'adf8yw0e' },
+      { id: 9, nome: 'Stefano', cognome: 'Di Maio', email:'stm@gmail.com',password:'f986f69d8' },
+      { id: 10, nome: 'Giulio', cognome: 'Patti', email:'giup@gmail.com',password:'4se972a' },
+      { id: 11, nome: 'Davide', cognome: 'Rossi', email:'drossi@gmail.com',password:'23534fc' },
+      { id: 12, nome: 'Mattia', cognome: 'Cucuzza', email:'macu@gmail.com',password:'a434c5344' }
   ];
     const auto = [
       { id: 1, marca: 'Fiat', modello: 'Panda', targa: 'ME123AF'},

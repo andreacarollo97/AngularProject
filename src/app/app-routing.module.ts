@@ -7,12 +7,14 @@ import {HomePageComponent} from "./pages/home-page/home-page.component";
 import {UserDetailComponent} from "./pages/user/user-detail/user-detail.component";
 import {AutoDetailComponent} from "./pages/auto/auto-detail/auto-detail.component";
 import {PrenotazioneDetailComponent} from "./pages/prenotazione/prenotazione-detail/prenotazione-detail.component";
+import {LoginPageComponent} from "./pages/login/login-page/login-page.component";
 
 
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'home', component: HomePageComponent },
+  { path: 'login', component: LoginPageComponent },
 
   { path: 'user', component: UserPageComponent },
   { path: 'user/detail/:id', component: UserDetailComponent },

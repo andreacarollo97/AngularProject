@@ -1,20 +1,17 @@
+
 <div class= container>
-  <h2>Dati dell'utente: <b>{{user.nome}} {{user.cognome}}</b></h2>
-  <div>
-    <input [(ngModel)]="user.nome" placeholder="nome"/><br>
-    <input [(ngModel)]="user.cognome" placeholder="cognome"/><br>
-    <input [(ngModel)]="user.email" placeholder="username"/><br>
-    <input [(ngModel)]="user.password" placeholder="password"/>
-  </div>
-  <div *ngIf="user.id" >
-    <button (click)="goBack()">Annulla</button>
-    <button (click)="save()">Salva</button>
-  </div>
-  <div *ngIf="!user.id" >
-    <button (click)="goBack()">Annulla</button>
-    <button (click)="add()">Aggiungi</button>
-  </div>
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <input type="text" name="nome" placeholder="nome" formControlName="nome"/><br>
+    <input type="text" name="cognome"  placeholder="cognome" formControlName="cognome"/><br>
+    <input type="text" name="email"  placeholder="e-mail" formControlName="email"/><br>
+    <input type="text" name="password"  placeholder="password"  formControlName="password"/>
+    <div>
+      <button (click)="goBack()">Annulla</button>
+      <button type="submit" [disabled]="!form.valid">Submit</button>
+    </div>
+  </form>
 </div>
+
 
 
 
