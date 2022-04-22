@@ -1,10 +1,16 @@
-<div class= container>
-  <h1>Login</h1>
-  <form>
-    <input type="text" name="email" placeholder="E-Mail"/><br>
-    <input type="text" name="password"  placeholder="Password"/><br>
-    <div>
-      <button type="submit">Login</button>
+<div class="container login-container">
+  <div class="row">
+    <div class="col-md-6 login-form">
+      <h3>Login Form</h3>
+      <div class="form-group">
+        <input type="text" class="form-control" placeholder="email" [(ngModel)] = "email" >
+      </div>
+      <div class="form-group">
+        <input type="password" class="form-control" placeholder="Password" [(ngModel)] = "password">
+      </div>
+      <div class="form-group">
+        <button (click) = gestAuth() class="btnSubmit">Connetti</button>
+      </div>
     </div>
-  </form>
+  </div>
 </div>

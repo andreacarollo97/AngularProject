@@ -8,6 +8,8 @@ import {UserDetailComponent} from "./pages/user/user-detail/user-detail.componen
 import {AutoDetailComponent} from "./pages/auto/auto-detail/auto-detail.component";
 import {PrenotazioneDetailComponent} from "./pages/prenotazione/prenotazione-detail/prenotazione-detail.component";
 import {LoginPageComponent} from "./pages/login/login-page/login-page.component";
+import {WelcomeComponent} from "./pages/welcome/welcome.component";
+import {RouteGuardService} from "./services/login/route-guard.service";
 
 
 
@@ -15,10 +17,12 @@ const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'home', component: HomePageComponent },
   { path: 'login', component: LoginPageComponent },
+  { path: 'logout', component: LoginPageComponent },
+  { path: 'welcome', component: WelcomeComponent, canActivate: [RouteGuardService]},
 
   { path: 'user', component: UserPageComponent },
-  { path: 'user/detail/:id', component: UserDetailComponent },
-  { path: 'user/add', component: UserDetailComponent },
+  { path: 'user/detail/:id', component: UserDetailComponent, canActivate: [RouteGuardService]},
+  { path: 'user/add', component: UserDetailComponent, canActivate: [RouteGuardService] },
 
   { path: 'auto', component: AutoPageComponent },
   { path: 'auto/detail/:id', component: AutoDetailComponent },

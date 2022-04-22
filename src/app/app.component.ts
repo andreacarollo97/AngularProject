@@ -1,6 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {MyTableConfig} from "./config/table/MyTableConfig";
-import {configUser} from "./config/page/configUser";
+
 
 
 @Component({
@@ -10,12 +10,11 @@ import {configUser} from "./config/page/configUser";
 })
 export class AppComponent implements OnInit {
   title = 'AngularProject';
-  userTableConfig = configUser;
   config !: MyTableConfig;
-
-
 
   ngOnInit(): void {
   }
+
+
 
 }

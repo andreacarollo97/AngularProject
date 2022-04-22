@@ -4,7 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { MyButtonComponent } from './my-button/my-button.component';
 import { MyTableComponent } from './my-table/my-table.component';
-import { HttpClientModule } from "@angular/common/http";
+import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { AppRoutingModule } from './app-routing.module';
 import { HeaderComponent } from './header/header.component';
@@ -19,6 +19,8 @@ import {AutoPageComponent} from "./pages/auto/auto-page/auto-page.component";
 import {AutoDetailComponent} from "./pages/auto/auto-detail/auto-detail.component";
 import { PrenotazioneDetailComponent } from './pages/prenotazione/prenotazione-detail/prenotazione-detail.component';
 import { LoginPageComponent } from './pages/login/login-page/login-page.component';
+import { WelcomeComponent } from './pages/welcome/welcome.component';
+
 
 
 
@@ -37,6 +39,7 @@ import { LoginPageComponent } from './pages/login/login-page/login-page.componen
     AutoDetailComponent,
     PrenotazioneDetailComponent,
     LoginPageComponent,
+    WelcomeComponent,
   ],
     imports: [
         BrowserModule,
@@ -48,7 +51,8 @@ import { LoginPageComponent } from './pages/login/login-page/login-page.componen
         ),
         ReactiveFormsModule
     ],
-  providers: [],
+  providers: [
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

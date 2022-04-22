@@ -37,7 +37,10 @@ export class InMemoryDataService implements InMemoryDbService {
       { id: 4, dataInizio: '2022-04-25', dataFine: '2022-06-02', stato : 0, auto_id : 6, user_id : 3},
     ];
     return {users,auto,prenotazione};
-  }
 
+  }
+  getUserByEmail(email : string) {
+
+}
 
 }
