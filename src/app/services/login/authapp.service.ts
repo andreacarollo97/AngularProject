@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
-import {Observable} from "rxjs";
+import {map, Observable} from "rxjs";
 import {UsersService} from "../users/users.service";
 
 @Injectable({
@@ -8,8 +8,6 @@ import {UsersService} from "../users/users.service";
 })
 export class AuthappService {
 
-  server : string = "localhost";
-  port : string = "4200"
 
   constructor(private httpClient : HttpClient, private usersService : UsersService) {
 
@@ -17,8 +15,8 @@ export class AuthappService {
 
 
 
-  autentica = (id: number) : Observable<any> => {
-    return this.usersService.getUser(id);
+  autentica = () : Observable<any> => {
+    return this.usersService.getUsers()
   }
 
 

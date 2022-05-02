@@ -23,35 +23,36 @@ export class AutoPageComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getAutos();
+    this.getAuto();
   }
 
   btnClicked($event: any) {
     switch ($event.action) {
       case 'add':
-        this.router.navigate(['add'], {relativeTo: this.route}).then(r => ['']) ;
+        this.router.navigate(['add'], {relativeTo: this.route}).then(r => ['auto']) ;
         break;
       case 'edit':
-        this.router.navigate(['detail/' + $event.item.id], {relativeTo: this.route}).then(r => ['']);
+        this.router.navigate(['detail/' + $event.item.id], {relativeTo: this.route}).then(r => ['auto']);
         break;
       case 'delete':
-        this.delete($event.item);
+        this.eliminaAuto($event.item.id);
         break;
     }
   }
 
 
-  delete(auto: Auto): void {
-    this.autos = this.autos.filter(u => u !== auto);
-    if (auto.id !== undefined){
-      this.service.deleteAuto(auto.id).subscribe();
-    }
+
+  eliminaAuto(id : number) {
+    this.service.eliminaAuto(id)
+      .subscribe(response => {
+        this.autos = this.autos.filter(auto => auto.id != id)
+      })
   }
 
-  getAutos(): void {
-    this.service.getAutos()
-      .subscribe(autos => {this.autos = autos
-        console.log(this.autos)});
+  getAuto(): void {
+    this.service.getAuto()
+      .subscribe(autos =>  this.autos = autos );
+    console.log(this.autos)
   }
 
 

@@ -25,8 +25,8 @@
     <table class="table">
     <thead>
     <tr>
-      <th *ngFor="let elem of tableConfig.headers"
-          (click)="sortTable(elem.key)">{{elem.label}}
+      <th *ngFor="let elem of tableConfig.headers">
+      <ng-container *ngIf="elem.key != 'id'" (click)="sortTable(elem.key)">{{elem.label}}</ng-container>
       </th>
     </tr>
     </thead>
@@ -34,7 +34,7 @@
 
     <tr *ngFor="let elem of filterData | slice : (currentPage1 -1) * elementForPage : elementForPage * currentPage1">
         <td *ngFor="let head of tableConfig.headers">
-          <span>{{elem[head.key]}}</span>
+          <ng-container *ngIf="head.key != 'id'"><span>{{elem[head.key]}}</span></ng-container>
       </td>
       <td *ngFor="let button of tableConfig.action">
         <div *ngIf="button.position == 'onRow'" >

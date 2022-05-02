@@ -4,6 +4,7 @@ import {Observable} from "rxjs";
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {User} from "../../model/user";
 import {environment} from "../../../environments/environment";
+import {Auto} from "../../model/auto";
 
 @Injectable({
   providedIn: 'root'
@@ -20,6 +21,7 @@ export class UsersService {
     private http: HttpClient
   ) { }
 
+  /*
   getUsers(): Observable<User[]> {
     return this.http.get<User[]>(this.userUrl);
   }
@@ -51,5 +53,30 @@ export class UsersService {
 
   getAll() {
     return this.http.get<User[]>('http://localhost:4200/user');
+  }
+   */
+
+  url : string = 'http://localhost:8080/api/user';
+
+
+
+  getUsers(): Observable<User[]> {
+    return this.http.get<User[]>(this.url+'/elenco/');
+  }
+
+  salvaUser(user : User) : Observable<User>{
+    return this.http.post<User>(this.url+'/salva',user)
+  }
+
+  ottieniUser(id : number) : Observable<User> {
+    return this.http.get<User>(this.url+'/'+id);
+  }
+
+  editUser(user : User) : Observable<User> {
+    return this.http.put<User>(this.url+'/edit/'+user.id,user);
+  }
+
+  eliminaUser(id : number): Observable<any> {
+    return this.http.delete<any>(this.url+'/elimina/'+id);
   }
 }

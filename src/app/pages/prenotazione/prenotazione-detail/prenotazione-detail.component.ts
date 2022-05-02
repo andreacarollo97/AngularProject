@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {Location} from "@angular/common";
 import {Prenotazione} from "../../../model/prenotazione";
 import {PrenotazioniService} from "../../../services/prenotazioni/prenotazioni.service";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+
 
 @Component({
   selector: 'app-prenotazione-detail',
@@ -13,7 +14,7 @@ import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 export class PrenotazioneDetailComponent implements OnInit {
 
   prenotazione !: Prenotazione;
-  prenotazioni : Prenotazione[] = [];
+
 
   form !: FormGroup;
   prenotazioneId !: number;
@@ -22,9 +23,10 @@ export class PrenotazioneDetailComponent implements OnInit {
 
 
   constructor(
-    private route: ActivatedRoute,
+    private router: Router,
+    private activateRouter: ActivatedRoute,
     private service: PrenotazioniService,
-    private location: Location,
+    private location : Location,
     public fb: FormBuilder
   ) {
     this.form = fb.group({
@@ -36,53 +38,57 @@ export class PrenotazioneDetailComponent implements OnInit {
     })
   }
 
+
+
+
+
   ngOnInit(): void {
-    this.getPrenotazione();
-  }
+    this.activateRouter.params
+      .subscribe(params => {
+        let id: number = params['id'];
+        if (id) {
+          this.service.ottieniPrenotazione(id)
+            .subscribe(response => {
+              this.prenotazione = response ;
+              this.prenotazioneId = Number(this.prenotazione.id);
+              delete this.prenotazione.id;
+              this.form.setValue(this.prenotazione)
+            });
 
-
-  getPrenotazione(): void {
-    this.prenotazioneId = Number(this.route.snapshot.paramMap.get('id'));
-    if (this.prenotazioneId) {
-      this.service.getPrenotazione(Number(this.prenotazioneId))
-        .subscribe(prenotazione => {
-          this.prenotazione = prenotazione;
-          this.form.setValue({
-            dataInizio: this.prenotazione.dataInizio,
-            dataFine: this.prenotazione.dataFine,
-            stato: this.prenotazione.stato,
-            user_id: this.prenotazione.user_id,
-            auto_id: this.prenotazione.auto_id
-          });
-        });
-    }
-    else {
-      this.prenotazione = {id : undefined, dataInizio : '', dataFine : '', stato : 0, user_id : undefined, auto_id : undefined}
-    }
-  }
-
-
-  goBack(): void {
-    this.location.back();
+        }
+      })
   }
 
   onSubmit(){
     this.prenotazione = this.form.value;
     if(!this.prenotazioneId){
-      this.service.addPrenotazione(this.prenotazione)
-        .subscribe(prenotazione => {
-          this.prenotazioni.push(prenotazione);
-          this.goBack()
-        });
+      this.salvaPrenotazione();
     }
     else{
       if (this.prenotazione) {
         this.prenotazione.id = this.prenotazioneId;
-        this.service.updatePrenotazione(this.prenotazione)
-          .subscribe(() => this.goBack());
+        this.editPrenotazione();
       }
     }
+  }
 
+  salvaPrenotazione() {
+    this.service.salvaPrenotazione(this.prenotazione)
+      .subscribe(response => this.router.navigate(['prenotazione']))
+  }
+
+  editPrenotazione() {
+    this.service.editPrenotazione(this.prenotazione)
+      .subscribe(response => this.router.navigate(['prenotazione']))
+  }
+
+
+
+
+
+
+  goBack(): void {
+    this.location.back();
   }
 
 

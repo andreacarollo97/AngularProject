@@ -14,7 +14,6 @@ import { PrenotazionePageComponent } from './pages/prenotazione/prenotazione-pag
 import { HomePageComponent } from './pages/home-page/home-page.component';
 import { UserDetailComponent } from './pages/user/user-detail/user-detail.component';
 import {HttpClientInMemoryWebApiModule} from "angular-in-memory-web-api";
-import {InMemoryDataService} from "./in-memory-data.service";
 import {AutoPageComponent} from "./pages/auto/auto-page/auto-page.component";
 import {AutoDetailComponent} from "./pages/auto/auto-detail/auto-detail.component";
 import { PrenotazioneDetailComponent } from './pages/prenotazione/prenotazione-detail/prenotazione-detail.component';
@@ -46,9 +45,6 @@ import { WelcomeComponent } from './pages/welcome/welcome.component';
         HttpClientModule,
         FormsModule,
         AppRoutingModule,
-        HttpClientInMemoryWebApiModule.forRoot(
-            InMemoryDataService, {dataEncapsulation: false}
-        ),
         ReactiveFormsModule
     ],
   providers: [

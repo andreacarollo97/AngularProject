@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {Location} from '@angular/common';
 import {Auto} from "../../../model/auto";
 import {AutosService} from "../../../services/auto/auto.service";
@@ -13,15 +13,14 @@ import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 export class AutoDetailComponent implements OnInit {
 
   auto !: Auto;
-  autos : Auto[] = [];
-
   form !: FormGroup;
   autoId !: number;
 
   constructor(
-    private route: ActivatedRoute,
+    private router: Router,
+    private activateRouter: ActivatedRoute,
     private service: AutosService,
-    private location: Location,
+    private location : Location,
     public fb: FormBuilder
   ) {
     this.form = fb.group({
@@ -32,53 +31,51 @@ export class AutoDetailComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getAuto();
+    this.activateRouter.params
+      .subscribe(params => {
+        let id: number = params['id'];
+        if (id) {
+          this.service.ottieniAuto(id)
+            .subscribe(response => {
+              this.auto = response ;
+              this.autoId = Number(this.auto.id);
+              delete this.auto.id;
+              this.form.setValue(this.auto)
+            });
+
+        }
+      })
   }
 
 
-  getAuto(): void {
-    this.autoId = Number(this.route.snapshot.paramMap.get('id'));
-    if (this.autoId) {
-      this.service.getAuto(Number(this.autoId))
-        .subscribe(auto => {
-          this.auto = auto;
-          this.form.setValue({
-            marca : this.auto.marca,
-            modello : this.auto.modello,
-            targa : this.auto.targa
-          });
-        });
+  onSubmit(){
+    this.auto = this.form.value;
+    if(!this.autoId){
+      this.salvaAuto();
     }
-    else {
-      this.auto = {id : undefined, targa : '', marca : '', modello : ''}
+    else{
+      if (this.auto) {
+        this.auto.id = this.autoId;
+        this.editAuto()
+      }
     }
   }
 
+  salvaAuto() {
+    this.service.salvaAuto(this.auto)
+      .subscribe(response => this.router.navigate(['auto']))
+  }
+
+  editAuto() {
+    this.service.editAuto(this.auto)
+      .subscribe(response => this.router.navigate(['auto']))
+  }
 
 
   goBack(): void {
     this.location.back();
   }
 
-  onSubmit(){
-    this.auto = this.form.value;
-    if(!this.autoId){
-      this.service.addAuto(this.auto)
-        .subscribe(user => {
-          this.autos.push(user);
-          this.goBack()
-        });
-    }
-    else{
-      if (this.auto) {
-        this.auto.id = this.autoId;
-        console.log(this.auto)
-        this.service.updateAuto(this.auto)
-          .subscribe(() => this.goBack());
-      }
-    }
-
-  }
 
 
 }

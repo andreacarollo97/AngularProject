@@ -35,12 +35,27 @@ export class UserPageComponent implements OnInit {
         this.router.navigate(['detail/' + $event.item.id], {relativeTo: this.route}).then(r => ['']);
         break;
       case 'delete':
-        this.delete($event.item);
+        this.eliminaUser($event.item.id);
         break;
     }
   }
 
+  eliminaUser(id : number) {
+    this.service.eliminaUser(id)
+      .subscribe(response => {
+        this.users = this.users.filter(user => user.id != id)
+      })
+  }
 
+  getUsers(): void {
+    this.service.getUsers()
+      .subscribe(users =>  this.users = users );
+  }
+
+
+
+
+/*
   delete(user: User): void {
     this.users = this.users.filter(u => u !== user);
     if (user.id !== undefined){
@@ -53,6 +68,7 @@ export class UserPageComponent implements OnInit {
       .subscribe(users => {this.users = users
       console.log(this.users)});
   }
+  */
 
 
 

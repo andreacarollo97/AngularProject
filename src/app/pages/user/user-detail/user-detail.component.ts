@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import {User} from "../../../model/user";
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {UsersService} from "../../../services/users/users.service";
 import {Location} from '@angular/common';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+
 
 @Component({
   selector: 'app-user-detail',
@@ -19,9 +20,10 @@ export class UserDetailComponent implements OnInit {
   userId !: number;
 
   constructor(
-    private route: ActivatedRoute,
+    private router: Router,
+    private activateRouter: ActivatedRoute,
     private service: UsersService,
-    private location: Location,
+    private location : Location,
     public fb: FormBuilder
   ) {
     this.form = fb.group({
@@ -33,55 +35,51 @@ export class UserDetailComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getUser();
-  }
+    this.activateRouter.params
+      .subscribe(params => {
+        let id: number = params['id'];
+        if (id) {
+          this.service.ottieniUser(id)
+            .subscribe(response => {
+              this.user = response ;
+              this.userId = Number(this.user.id);
+              delete this.user.id;
+              this.form.setValue(this.user)
+            });
 
-
-  getUser(): void {
-    this.userId = Number(this.route.snapshot.paramMap.get('id'));
-    if (this.userId) {
-      this.service.getUser(Number(this.userId))
-        .subscribe(user => {
-          this.user = user;
-          console.log(this.user);
-          this.form.setValue({
-            nome: this.user.nome,
-            cognome: this.user.cognome,
-            email: this.user.email,
-            password : this.user.password
-          });
-        });
-
-    }
-    else {
-      this.user = {id : undefined, nome : '', cognome : '', email : '', password : ''}
-    }
-  }
-
-  goBack(): void {
-    this.location.back();
+        }
+      })
   }
 
   onSubmit(){
     this.user = this.form.value;
     if(!this.userId){
-      this.service.addUser(this.user)
-        .subscribe(user => {
-          this.users.push(user);
-          this.goBack()
-        });
+      this.salvaUser();
     }
     else{
-      console.log(this.user)
       if (this.user) {
         this.user.id = this.userId;
-        console.log(this.user)
-        this.service.updateUser(this.user)
-          .subscribe(() => this.goBack());
+        this.editUser();
       }
     }
-
   }
 
+  salvaUser() {
+    this.service.salvaUser(this.user)
+      .subscribe(response => this.router.navigate(['user']))
+  }
+
+  editUser() {
+    this.service.editUser(this.user)
+      .subscribe(response => this.router.navigate(['user']))
+  }
+
+
+
+
+
+  goBack(): void {
+    this.location.back();
+  }
 
 }

@@ -19,10 +19,10 @@ export class LoginPageComponent implements OnInit {
   }
 
   gestAuth = (): void => {
-    console.log(this.email);
+    console.log(this.id);
 
-    this.basicAuth.autentica(this.id).subscribe(utente => {
-      sessionStorage.setItem('token', utente.email)
+    this.basicAuth.autentica().subscribe(utente => {
+      sessionStorage.setItem('token', utente.id);
       this.route.navigate(['welcome']);
   })
   }

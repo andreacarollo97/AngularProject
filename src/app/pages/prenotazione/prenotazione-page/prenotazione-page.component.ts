@@ -35,22 +35,32 @@ export class PrenotazionePageComponent implements OnInit {
         this.router.navigate(['detail/' + $event.item.id], {relativeTo: this.route}).then(r => ['']);
         break;
       case 'delete':
-        this.delete($event.item);
+        this.eliminaPrenotazione($event.item.id);
         break;
     }
   }
 
+  eliminaPrenotazione(id : number) {
+    this.service.eliminaPrenotazione(id)
+      .subscribe(response => {
+        this.prenotazioni = this.prenotazioni.filter(prenotazione => prenotazione.id != id)
+      })
+  }
 
+
+
+
+/*
   delete(prenotazione: Prenotazione): void {
     this.prenotazioni = this.prenotazioni.filter(p => p !== prenotazione);
     if (prenotazione.id !== undefined){
       this.service.deletePrenotazione(prenotazione.id).subscribe();
     }
   }
+ */
 
   getPrenotazioni(): void {
     this.service.getPrenotazioni()
-      .subscribe(prenotazioni => {this.prenotazioni = prenotazioni
-        console.log(this.prenotazioni)});
+      .subscribe(prenotazioni => this.prenotazioni = prenotazioni );
   }
 }
