@@ -50,14 +50,7 @@ export class PrenotazionePageComponent implements OnInit {
 
 
 
-/*
-  delete(prenotazione: Prenotazione): void {
-    this.prenotazioni = this.prenotazioni.filter(p => p !== prenotazione);
-    if (prenotazione.id !== undefined){
-      this.service.deletePrenotazione(prenotazione.id).subscribe();
-    }
-  }
- */
+
 
   getPrenotazioni(): void {
     this.service.getPrenotazioni()

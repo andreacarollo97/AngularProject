@@ -19,8 +19,6 @@ export class LoginPageComponent implements OnInit {
   }
 
   gestAuth = (): void => {
-    console.log(this.id);
-
     this.basicAuth.autentica().subscribe(utente => {
       sessionStorage.setItem('token', utente.id);
       this.route.navigate(['welcome']);

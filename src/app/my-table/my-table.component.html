@@ -4,7 +4,7 @@
       <div>
       <h5>Seleziona il campo di Ricerca</h5>
       <select [(ngModel)]="key">
-        <option *ngFor="let item of tableConfig.headers "
+        <option *ngFor="let item of tableConfig.headers"
                 value="{{item.key}}">{{item.label}}
         </option>
       </select>
@@ -25,8 +25,8 @@
     <table class="table">
     <thead>
     <tr>
-      <th *ngFor="let elem of tableConfig.headers">
-      <ng-container *ngIf="elem.key != 'id'" (click)="sortTable(elem.key)">{{elem.label}}</ng-container>
+      <th *ngFor="let elem of tableConfig.headers"
+      (click)="sortTable(elem.key)">{{elem.label}}
       </th>
     </tr>
     </thead>
@@ -34,7 +34,7 @@
 
     <tr *ngFor="let elem of filterData | slice : (currentPage1 -1) * elementForPage : elementForPage * currentPage1">
         <td *ngFor="let head of tableConfig.headers">
-          <ng-container *ngIf="head.key != 'id'"><span>{{elem[head.key]}}</span></ng-container>
+          <span>{{elem[head.key]}}</span>
       </td>
       <td *ngFor="let button of tableConfig.action">
         <div *ngIf="button.position == 'onRow'" >

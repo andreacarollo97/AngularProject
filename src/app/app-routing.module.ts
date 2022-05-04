@@ -10,6 +10,8 @@ import {PrenotazioneDetailComponent} from "./pages/prenotazione/prenotazione-det
 import {LoginPageComponent} from "./pages/login/login-page/login-page.component";
 import {WelcomeComponent} from "./pages/welcome/welcome.component";
 import {RouteGuardService} from "./services/login/route-guard.service";
+import {PrenotazioneUserComponent} from "./pages/prenotazione/prenotazione-user/prenotazione-user.component";
+import {AutoDisponibiliComponent} from "./pages/prenotazione/auto-disponibili/auto-disponibili.component";
 
 
 
@@ -30,7 +32,11 @@ const routes: Routes = [
 
   { path: 'prenotazione', component: PrenotazionePageComponent },
   { path: 'prenotazione/detail/:id', component: PrenotazioneDetailComponent },
-  { path: 'prenotazione/add', component: PrenotazioneDetailComponent }
+  { path: 'prenotazione/add', component: PrenotazioneDetailComponent },
+
+  { path: 'prenota', component: PrenotazioneUserComponent},
+  { path: 'listauto/:dataInizio/:dataFine', component: AutoDisponibiliComponent},
+
 ];
 
 @NgModule({

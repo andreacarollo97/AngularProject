@@ -38,10 +38,6 @@ export class PrenotazioneDetailComponent implements OnInit {
     })
   }
 
-
-
-
-
   ngOnInit(): void {
     this.activateRouter.params
       .subscribe(params => {
@@ -81,11 +77,6 @@ export class PrenotazioneDetailComponent implements OnInit {
     this.service.editPrenotazione(this.prenotazione)
       .subscribe(response => this.router.navigate(['prenotazione']))
   }
-
-
-
-
-
 
   goBack(): void {
     this.location.back();

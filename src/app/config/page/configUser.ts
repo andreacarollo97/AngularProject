@@ -6,11 +6,9 @@ import {MyTableConfig} from "../table/MyTableConfig";
 
 export const configUser: MyTableConfig = {
   headers: [
-    {key: 'id', label: 'ID'},
     {key: 'nome', label: 'Nome'},
     {key: 'cognome', label: 'Cognome'},
     {key: 'email', label: 'Mail'},
-    {key: 'password', label: 'Password'},
   ],
   order: {
     defaultColumn: 'nome',

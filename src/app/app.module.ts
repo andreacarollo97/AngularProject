@@ -19,6 +19,8 @@ import {AutoDetailComponent} from "./pages/auto/auto-detail/auto-detail.componen
 import { PrenotazioneDetailComponent } from './pages/prenotazione/prenotazione-detail/prenotazione-detail.component';
 import { LoginPageComponent } from './pages/login/login-page/login-page.component';
 import { WelcomeComponent } from './pages/welcome/welcome.component';
+import { PrenotazioneUserComponent } from './pages/prenotazione/prenotazione-user/prenotazione-user.component';
+import { AutoDisponibiliComponent } from './pages/prenotazione/auto-disponibili/auto-disponibili.component';
 
 
 
@@ -39,6 +41,8 @@ import { WelcomeComponent } from './pages/welcome/welcome.component';
     PrenotazioneDetailComponent,
     LoginPageComponent,
     WelcomeComponent,
+    PrenotazioneUserComponent,
+    AutoDisponibiliComponent,
   ],
     imports: [
         BrowserModule,

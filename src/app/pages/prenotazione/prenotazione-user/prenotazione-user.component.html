@@ -1,0 +1,13 @@
+<div class= container>
+  <h5>Inserisci data di Inizio Prenotazione e data di Fine Prenotazione</h5>
+  <form [formGroup]="form" (ngSubmit)="mostraListaAutoDisponibili()">
+    <br/><h6>Data di Inizio Prenotazione</h6>
+    <input type="date" name="dataInizio" formControlName="dataInizio"/><br>
+    <br/><h6>Data di Fine Prenotazione</h6>
+    <input type="date" name="dataFine" formControlName="dataFine"/><br>
+    <br/><div>
+      <button (click)="goBack()">Annulla</button>
+      <button type="submit" [disabled]="!form.valid">Mostra Auto Disponibili</button>
+    </div>
+  </form>
+</div>

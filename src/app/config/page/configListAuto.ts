@@ -1,10 +1,8 @@
-import {configButtonEDIT} from "../button/configButtonEDIT";
-import {configButtonDELETE} from "../button/configButtonDELETE";
-import {configButtonADD} from "../button/configButtonADD";
 import {MyTableConfig} from "../table/MyTableConfig";
+import {configButtonPRENOTA} from "../button/configButtonPRENOTA";
 
 
-export const configAuto: MyTableConfig = {
+export const configListAuto: MyTableConfig = {
   headers: [
     {key: 'marca', label: 'Marca'},
     {key: 'modello', label: 'Modello'},
@@ -22,6 +20,6 @@ export const configAuto: MyTableConfig = {
     itemForPageOptions: [5, 10, 15, 25]
   },
   action: [
-    configButtonADD,configButtonEDIT,configButtonDELETE
+    configButtonPRENOTA
   ]
 }
