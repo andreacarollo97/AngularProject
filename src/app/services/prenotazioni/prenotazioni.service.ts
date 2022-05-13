@@ -37,6 +37,10 @@ export class PrenotazioniService {
     return this.http.put<Prenotazione>(this.url+'/edit/'+prenotazione.id,prenotazione);
   }
 
+  validatePrenotazione(id : number): Observable<any> {
+    return this.http.post<any>(this.url+'/validate/'+id,id);
+  }
+
   eliminaPrenotazione(id : number): Observable<any> {
     return this.http.delete<any>(this.url+'/elimina/'+id);
   }
@@ -44,4 +48,6 @@ export class PrenotazioniService {
   listaAutoDisponibili(dataInizio : string, dataFine : string): Observable<Auto[]> {
     return this.http.get<Auto[]>(this.url+'/listauto/?dataInizio='+dataInizio+'&dataFine='+dataFine);
   }
+
+
 }

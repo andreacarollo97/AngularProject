@@ -8,10 +8,15 @@ import {UserDetailComponent} from "./pages/user/user-detail/user-detail.componen
 import {AutoDetailComponent} from "./pages/auto/auto-detail/auto-detail.component";
 import {PrenotazioneDetailComponent} from "./pages/prenotazione/prenotazione-detail/prenotazione-detail.component";
 import {LoginPageComponent} from "./pages/login/login-page/login-page.component";
-import {WelcomeComponent} from "./pages/welcome/welcome.component";
-import {RouteGuardService} from "./services/login/route-guard.service";
+
+import {RouteGuardServiceAdmin} from "./services/login/route-guard.serviceAdmin";
 import {PrenotazioneUserComponent} from "./pages/prenotazione/prenotazione-user/prenotazione-user.component";
 import {AutoDisponibiliComponent} from "./pages/prenotazione/auto-disponibili/auto-disponibili.component";
+import {RouteGuardServiceUser} from "./services/login/route-guard.serviceUser";
+import {WelcomeAdminComponent} from "./pages/welcome/welcome-admin/welcome-admin.component";
+import {WelcomeUserComponent} from "./pages/welcome/welcome-user/welcome-user.component";
+
+
 
 
 
@@ -19,23 +24,24 @@ const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'home', component: HomePageComponent },
   { path: 'login', component: LoginPageComponent },
-  { path: 'logout', component: LoginPageComponent },
-  { path: 'welcome', component: WelcomeComponent, canActivate: [RouteGuardService]},
+  { path: 'logout', component: LoginPageComponent, canActivate: [RouteGuardServiceAdmin,RouteGuardServiceUser]},
+  { path: 'welcomeAdmin', component: WelcomeAdminComponent, canActivate: [RouteGuardServiceAdmin]},
+  { path: 'welcomeUser', component: WelcomeUserComponent, canActivate: [RouteGuardServiceUser]},
 
-  { path: 'user', component: UserPageComponent },
-  { path: 'user/detail/:id', component: UserDetailComponent, canActivate: [RouteGuardService]},
-  { path: 'user/add', component: UserDetailComponent, canActivate: [RouteGuardService] },
+  { path: 'user', component: UserPageComponent, canActivate: [RouteGuardServiceAdmin]},
+  { path: 'user/detail/:id', component: UserDetailComponent, canActivate: [RouteGuardServiceAdmin]},
+  { path: 'user/add', component: UserDetailComponent, canActivate: [RouteGuardServiceAdmin]},
 
-  { path: 'auto', component: AutoPageComponent },
-  { path: 'auto/detail/:id', component: AutoDetailComponent },
-  { path: 'auto/add', component: AutoDetailComponent },
+  { path: 'auto', component: AutoPageComponent, canActivate: [RouteGuardServiceAdmin]},
+  { path: 'auto/detail/:id', component: AutoDetailComponent, canActivate: [RouteGuardServiceAdmin]},
+  { path: 'auto/add', component: AutoDetailComponent, canActivate: [RouteGuardServiceAdmin] },
 
-  { path: 'prenotazione', component: PrenotazionePageComponent },
-  { path: 'prenotazione/detail/:id', component: PrenotazioneDetailComponent },
-  { path: 'prenotazione/add', component: PrenotazioneDetailComponent },
+  { path: 'prenotazione', component: PrenotazionePageComponent , canActivate: [RouteGuardServiceAdmin]},
+  { path: 'prenotazione/detail/:id', component: PrenotazioneDetailComponent , canActivate: [RouteGuardServiceAdmin]},
+  { path: 'prenotazione/add', component: PrenotazioneDetailComponent, canActivate: [RouteGuardServiceAdmin] },
 
-  { path: 'prenota', component: PrenotazioneUserComponent},
-  { path: 'listauto/:dataInizio/:dataFine', component: AutoDisponibiliComponent},
+  { path: 'prenota', component: PrenotazioneUserComponent, canActivate:[RouteGuardServiceUser]},
+  { path: 'listauto/:dataInizio/:dataFine', component: AutoDisponibiliComponent, canActivate:[RouteGuardServiceUser]},
 
 ];
 

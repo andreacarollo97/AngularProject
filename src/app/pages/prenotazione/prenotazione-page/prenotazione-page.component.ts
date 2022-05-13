@@ -3,6 +3,7 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {Prenotazione} from "../../../model/prenotazione";
 import {configPrenotazione} from "../../../config/page/configPrenotazione";
 import {PrenotazioniService} from "../../../services/prenotazioni/prenotazioni.service";
+import * as _ from "lodash";
 
 @Component({
   selector: 'app-prenotazione-page',
@@ -13,6 +14,7 @@ export class PrenotazionePageComponent implements OnInit {
 
   prenotazioni : Prenotazione[] = [];
   prenotazioniTable = configPrenotazione;
+
 
 
   constructor(
@@ -26,13 +28,17 @@ export class PrenotazionePageComponent implements OnInit {
     this.getPrenotazioni();
   }
 
+
+  ngOnChanges(): void {
+    this.getPrenotazioni();
+  }
+
+
   btnClicked($event: any) {
     switch ($event.action) {
-      case 'add':
-        this.router.navigate(['add'], {relativeTo: this.route}).then(r => ['']) ;
-        break;
-      case 'edit':
-        this.router.navigate(['detail/' + $event.item.id], {relativeTo: this.route}).then(r => ['']);
+      case 'validate':
+        this.validatePrenotazione($event.item.id)
+        this.router.navigate(['']);
         break;
       case 'delete':
         this.eliminaPrenotazione($event.item.id);
@@ -48,7 +54,12 @@ export class PrenotazionePageComponent implements OnInit {
   }
 
 
-
+  validatePrenotazione(id : number) {
+    this.service.validatePrenotazione(id)
+      .subscribe(response => {
+        this.prenotazioni = this.prenotazioni.filter(prenotazione => prenotazione.id != id)
+      })
+  }
 
 
 

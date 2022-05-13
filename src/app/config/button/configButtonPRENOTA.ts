@@ -5,6 +5,6 @@ export const configButtonPRENOTA : MyButtonConfig = {
   text: 'PRENOTA',
   icon: '',
   action : 'prenota',
-  position : 'onRow'
-
+  position : 'onRow',
+  active : ''
 }

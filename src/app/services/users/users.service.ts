@@ -19,7 +19,7 @@ export class UsersService {
 
 
   getUsers(): Observable<User[]> {
-    return this.http.get<User[]>(this.url+'/elenco/');
+    return this.http.get<User[]>(this.url+'/elenco');
   }
 
   salvaUser(user : User) : Observable<User>{

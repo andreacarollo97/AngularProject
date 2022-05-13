@@ -5,6 +5,7 @@ export const configButtonADD : MyButtonConfig = {
   text: 'ADD',
   icon: '',
   action : 'add',
-  position : 'top'
+  position : 'top',
+  active : ''
 
 }

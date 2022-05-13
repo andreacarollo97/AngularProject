@@ -4,7 +4,8 @@
     <input type="text" name="nome" placeholder="nome" formControlName="nome"/><br>
     <input type="text" name="cognome"  placeholder="cognome" formControlName="cognome"/><br>
     <input type="text" name="email"  placeholder="e-mail" formControlName="email"/><br>
-    <input type="text" name="password"  placeholder="password"  formControlName="password"/>
+    <input type="text" name="password"  placeholder="password"  formControlName="password"/><br>
+    <input type="text" name="ruolo" formControlName="ruolo"/>
     <div>
       <button (click)="goBack()">Annulla</button>
       <button type="submit" [disabled]="!form.valid">Submit</button>

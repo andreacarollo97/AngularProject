@@ -13,14 +13,17 @@ import { PrenotazionePageComponent } from './pages/prenotazione/prenotazione-pag
 
 import { HomePageComponent } from './pages/home-page/home-page.component';
 import { UserDetailComponent } from './pages/user/user-detail/user-detail.component';
-import {HttpClientInMemoryWebApiModule} from "angular-in-memory-web-api";
 import {AutoPageComponent} from "./pages/auto/auto-page/auto-page.component";
 import {AutoDetailComponent} from "./pages/auto/auto-detail/auto-detail.component";
 import { PrenotazioneDetailComponent } from './pages/prenotazione/prenotazione-detail/prenotazione-detail.component';
 import { LoginPageComponent } from './pages/login/login-page/login-page.component';
-import { WelcomeComponent } from './pages/welcome/welcome.component';
+
 import { PrenotazioneUserComponent } from './pages/prenotazione/prenotazione-user/prenotazione-user.component';
 import { AutoDisponibiliComponent } from './pages/prenotazione/auto-disponibili/auto-disponibili.component';
+import {InterceptorService} from "./services/login/interceptor.service";
+import { WelcomeAdminComponent } from './pages/welcome/welcome-admin/welcome-admin.component';
+import { WelcomeUserComponent } from './pages/welcome/welcome-user/welcome-user.component';
+
 
 
 
@@ -40,9 +43,10 @@ import { AutoDisponibiliComponent } from './pages/prenotazione/auto-disponibili/
     AutoDetailComponent,
     PrenotazioneDetailComponent,
     LoginPageComponent,
-    WelcomeComponent,
     PrenotazioneUserComponent,
     AutoDisponibiliComponent,
+    WelcomeAdminComponent,
+    WelcomeUserComponent,
   ],
     imports: [
         BrowserModule,
@@ -52,6 +56,7 @@ import { AutoDisponibiliComponent } from './pages/prenotazione/auto-disponibili/
         ReactiveFormsModule
     ],
   providers: [
+    {provide : HTTP_INTERCEPTORS, useClass : InterceptorService, multi : true}
   ],
   bootstrap: [AppComponent]
 })

@@ -27,7 +27,5 @@ export class MyPagination {
   itemForPageOptions !: number[];
 }
 
-export enum MyTableActionEnum {
-  ADD , EDIT, DELETE
-}
+
 

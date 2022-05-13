@@ -6,5 +6,6 @@ export const configButtonEDIT : MyButtonConfig = {
   text: 'EDIT',
   icon: '',
   action : 'edit',
-  position : 'onRow'
+  position : 'onRow',
+  active : ''
 }

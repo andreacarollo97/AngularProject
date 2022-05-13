@@ -4,12 +4,12 @@
       <a class="navbar-brand" routerLink="/home">Rental CAR</a>
     </div>
     <ul class="nav navbar-nav">
-      <li><a routerLink="/user">Users</a></li>
-      <li><a routerLink="/auto">Auto</a></li>
-      <li><a routerLink="/prenotazione">Prenotazioni</a></li>
-      <li><a routerLink="/prenota">Prenota</a></li>
-      <li><a routerLink="/logout" *ngIf="BasicAuth.isLogged()" (click)="BasicAuth.clearAll()">Logout {{BasicAuth.loggedUser()}}</a></li>
-      <li><a routerLink="/login" disabled *ngIf="!BasicAuth.isLogged()">Login</a></li>
+      <li><a routerLink="/user" *ngIf="authService.isLogged()">Users</a></li>
+      <li><a routerLink="/auto" *ngIf="authService.isLogged()">Auto</a></li>
+      <li><a routerLink="/prenotazione" *ngIf="authService.isLogged()">Prenotazioni</a></li>
+      <li><a routerLink="/prenota" *ngIf="authService.isLogged()">Prenota</a></li>
+      <li><a routerLink="/logout" *ngIf="authService.isLogged()" (click)="authService.clearAll()">Logout {{authService.loggedUser()}}</a></li>
+      <li><a routerLink="/login" disabled *ngIf="!authService.isLogged()">Login</a></li>
     </ul>
   </div>
 </nav>

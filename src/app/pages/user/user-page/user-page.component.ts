@@ -55,20 +55,6 @@ export class UserPageComponent implements OnInit {
 
 
 
-/*
-  delete(user: User): void {
-    this.users = this.users.filter(u => u !== user);
-    if (user.id !== undefined){
-      this.service.deleteUser(user.id).subscribe();
-    }
-  }
-
-  getUsers(): void {
-    this.service.getUsers()
-      .subscribe(users => {this.users = users
-      console.log(this.users)});
-  }
-  */
 
 
 

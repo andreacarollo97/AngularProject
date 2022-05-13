@@ -1,11 +1,11 @@
 import { MyButtonConfig } from "./MyButtonConfig";
 
 
-export const configButtonDELETE: MyButtonConfig = {
+export const configButtonVALIDATE : MyButtonConfig = {
   customCssClass: 'btn',
-  text: 'DELETE',
+  text: 'VALIDATE',
   icon: '',
-  action : 'delete',
+  action : 'validate',
   position : 'onRow',
   active : ''
 }

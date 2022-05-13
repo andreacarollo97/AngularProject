@@ -31,6 +31,7 @@ export class UserDetailComponent implements OnInit {
       'cognome': ['', Validators.required],
       'email': ['', Validators.email],
       'password': ['', Validators.minLength(6)],
+      'ruolo': ['ROLE_USER', Validators.required],
     })
   }
 

@@ -2,6 +2,7 @@ import {configButtonEDIT} from "../button/configButtonEDIT";
 import {configButtonDELETE} from "../button/configButtonDELETE";
 import {configButtonADD} from "../button/configButtonADD";
 import {MyTableConfig} from "../table/MyTableConfig";
+import {configButtonVALIDATE} from "../button/configButtonVALIDATE";
 
 
 export const configPrenotazione: MyTableConfig = {
@@ -22,6 +23,6 @@ export const configPrenotazione: MyTableConfig = {
     itemForPageOptions: [5, 10, 15, 25]
   },
   action: [
-    configButtonADD,configButtonEDIT,configButtonDELETE
+    configButtonVALIDATE,configButtonDELETE
   ]
 }

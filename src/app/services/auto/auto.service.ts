@@ -19,32 +19,8 @@ export class AutosService {
   constructor(
     private http: HttpClient
   ) { }
-/*
-  getAutos(): Observable<Auto[]> {
-    return this.http.get<Auto[]>(this.autoUrl);
-  }
 
-  getAuto(id: number): Observable<Auto> {
-    const url = `${this.autoUrl}/${id}`;
-    return this.http.get<Auto>(url);
-  }
-
-  addAuto(auto: Auto): Observable<Auto> {
-    return this.http.post<Auto>(this.autoUrl, auto, this.httpOptions);
-  }
-
-  deleteAuto(id: number): Observable<Auto> {
-    const url = `${this.autoUrl}/${id}`;
-    return this.http.delete<Auto>(url, this.httpOptions);
-  }
-
-  updateAuto(auto: Auto): Observable<any> {
-    return this.http.put(this.autoUrl, auto, this.httpOptions);
-  }
-*/
   url : string = 'http://localhost:8080/api/auto';
-
-
 
   getAuto(): Observable<Auto[]> {
     return this.http.get<Auto[]>(this.url+'/elenco/');
