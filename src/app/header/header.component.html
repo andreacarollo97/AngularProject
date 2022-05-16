@@ -5,10 +5,8 @@
     </div>
     <ul class="nav navbar-nav">
       <li><a routerLink="/user" *ngIf="authService.isLogged() && authService.isAdmin()">Users</a></li>
-      <li><a routerLink="/auto" *ngIf="authService.isLogged() && authService.isAdmin()">Auto</a></li>
-      <li><a routerLink="/autos" *ngIf="authService.isLogged() && authService.isUser()">Auto</a></li>
-      <li><a routerLink="/prenotazione" *ngIf="authService.isLogged() && authService.isAdmin()">Prenotazioni</a></li>
-      <li><a routerLink="/prenotazioni" *ngIf="authService.isLogged() && authService.isUser()">Prenotazioni</a></li>
+      <li><a routerLink="/auto" *ngIf="authService.isLogged()">Auto</a></li>
+      <li><a routerLink="/prenotazione" *ngIf="authService.isLogged()">Prenotazioni</a></li>
       <li><a routerLink="/prenota" *ngIf="authService.isLogged() && authService.isUser()">Prenota</a></li>
       <li><a routerLink="/logout" *ngIf="authService.isLogged()" (click)="authService.clearAll()">Logout</a></li>
       <li><a routerLink="/login" disabled *ngIf="!authService.isLogged()">Login</a></li>

@@ -28,7 +28,7 @@ export class RouteGuardServiceUser implements CanActivate {
     }
 
     else {
-      if (this.ruolo === 'ROLE_USER') {
+      if (this.ruolo === 'ROLE_USER' || this.ruolo === 'ROLE_ADMIN') {
         return true;
       }
       else {

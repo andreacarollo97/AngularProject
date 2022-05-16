@@ -24,7 +24,7 @@ const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'home', component: HomePageComponent },
   { path: 'login', component: LoginPageComponent },
-  { path: 'logout', component: LoginPageComponent, canActivate: [RouteGuardServiceAdmin,RouteGuardServiceUser]},
+  { path: 'logout', component: LoginPageComponent, canActivate: [RouteGuardServiceUser]},
   { path: 'welcomeAdmin', component: WelcomeAdminComponent, canActivate: [RouteGuardServiceAdmin]},
   { path: 'welcomeUser', component: WelcomeUserComponent, canActivate: [RouteGuardServiceUser]},
 
@@ -32,18 +32,17 @@ const routes: Routes = [
   { path: 'user/detail/:id', component: UserDetailComponent, canActivate: [RouteGuardServiceAdmin]},
   { path: 'user/add', component: UserDetailComponent, canActivate: [RouteGuardServiceAdmin]},
 
-  { path: 'auto', component: AutoPageComponent, canActivate: [RouteGuardServiceAdmin]},
+  { path: 'auto', component: AutoPageComponent, canActivate: [RouteGuardServiceUser]},
   { path: 'auto/detail/:id', component: AutoDetailComponent, canActivate: [RouteGuardServiceAdmin]},
   { path: 'auto/add', component: AutoDetailComponent, canActivate: [RouteGuardServiceAdmin] },
 
-  { path: 'prenotazione', component: PrenotazionePageComponent , canActivate: [RouteGuardServiceAdmin]},
+  { path: 'prenotazione', component: PrenotazionePageComponent , canActivate: [RouteGuardServiceUser]},
   { path: 'prenotazione/detail/:id', component: PrenotazioneDetailComponent , canActivate: [RouteGuardServiceAdmin]},
-  { path: 'prenotazione/add', component: PrenotazioneDetailComponent, canActivate: [RouteGuardServiceAdmin] },
+  { path: 'prenotazione/add', component: PrenotazioneDetailComponent, canActivate: [RouteGuardServiceAdmin]},
 
   { path: 'prenota', component: PrenotazioneUserComponent, canActivate:[RouteGuardServiceUser]},
   { path: 'listauto/:dataInizio/:dataFine', component: AutoDisponibiliComponent, canActivate:[RouteGuardServiceUser]},
-  { path: 'prenotazioni', component: PrenotazionePageComponent, canActivate:[RouteGuardServiceUser]},
-  { path: 'autos', component: AutoPageComponent, canActivate:[RouteGuardServiceUser]},
+
 
 ];
 
