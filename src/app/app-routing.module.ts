@@ -42,6 +42,8 @@ const routes: Routes = [
 
   { path: 'prenota', component: PrenotazioneUserComponent, canActivate:[RouteGuardServiceUser]},
   { path: 'listauto/:dataInizio/:dataFine', component: AutoDisponibiliComponent, canActivate:[RouteGuardServiceUser]},
+  { path: 'prenotazioni', component: PrenotazionePageComponent, canActivate:[RouteGuardServiceUser]},
+  { path: 'autos', component: AutoPageComponent, canActivate:[RouteGuardServiceUser]},
 
 ];
 

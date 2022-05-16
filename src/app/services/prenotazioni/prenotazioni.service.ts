@@ -25,6 +25,10 @@ export class PrenotazioniService {
     return this.http.get<Prenotazione[]>(this.url+'/elenco');
   }
 
+  getMiePrenotazioni(): Observable<Prenotazione[]> {
+    return this.http.get<Prenotazione[]>(this.url+'/prenotazioni/' + sessionStorage.getItem("AuthId"));
+  }
+
   salvaPrenotazione(prenotazione : Prenotazione) : Observable<Prenotazione>{
     return this.http.post<Prenotazione>(this.url+'/salva',prenotazione)
   }

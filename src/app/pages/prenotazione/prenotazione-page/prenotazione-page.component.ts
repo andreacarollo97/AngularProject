@@ -4,6 +4,9 @@ import {Prenotazione} from "../../../model/prenotazione";
 import {configPrenotazione} from "../../../config/page/configPrenotazione";
 import {PrenotazioniService} from "../../../services/prenotazioni/prenotazioni.service";
 import * as _ from "lodash";
+import {MyTableComponent} from "../../../my-table/my-table.component";
+import {MyTableConfig} from "../../../config/table/MyTableConfig";
+import {configPrenotazioni} from "../../../config/page/configPrenotazioni";
 
 @Component({
   selector: 'app-prenotazione-page',
@@ -13,7 +16,7 @@ import * as _ from "lodash";
 export class PrenotazionePageComponent implements OnInit {
 
   prenotazioni : Prenotazione[] = [];
-  prenotazioniTable = configPrenotazione;
+  prenotazioniTable !: MyTableConfig;
 
 
 
@@ -29,16 +32,12 @@ export class PrenotazionePageComponent implements OnInit {
   }
 
 
-  ngOnChanges(): void {
-    this.getPrenotazioni();
-  }
-
 
   btnClicked($event: any) {
     switch ($event.action) {
       case 'validate':
         this.validatePrenotazione($event.item.id)
-        this.router.navigate(['']);
+        this.router.navigate(['/'],{relativeTo: this.route});
         break;
       case 'delete':
         this.eliminaPrenotazione($event.item.id);
@@ -64,7 +63,15 @@ export class PrenotazionePageComponent implements OnInit {
 
 
   getPrenotazioni(): void {
-    this.service.getPrenotazioni()
-      .subscribe(prenotazioni => this.prenotazioni = prenotazioni );
+    if (sessionStorage.getItem('AuthRole') === 'ROLE_ADMIN') {
+      this.prenotazioniTable = configPrenotazione;
+      this.service.getPrenotazioni()
+        .subscribe(prenotazioni => this.prenotazioni = prenotazioni);
+    }
+    else {
+      this.prenotazioniTable = configPrenotazioni;
+      this.service.getMiePrenotazioni()
+        .subscribe(prenotazioni => this.prenotazioni = prenotazioni);
+    }
   }
 }

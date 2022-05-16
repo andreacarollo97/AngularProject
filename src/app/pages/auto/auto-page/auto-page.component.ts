@@ -3,6 +3,8 @@ import { Auto } from "../../../model/auto";
 import { configAuto } from "../../../config/page/configauto";
 import { ActivatedRoute, Router } from "@angular/router";
 import { AutosService } from "../../../services/auto/auto.service";
+import {MyTableConfig} from "../../../config/table/MyTableConfig";
+import {configAutos} from "../../../config/page/configAutos";
 
 @Component({
   selector: 'app-auto-page',
@@ -12,7 +14,7 @@ import { AutosService } from "../../../services/auto/auto.service";
 export class AutoPageComponent implements OnInit {
 
   autos : Auto[] = [];
-  autosTable = configAuto;
+  autosTable !: MyTableConfig;
 
 
   constructor(
@@ -50,6 +52,12 @@ export class AutoPageComponent implements OnInit {
   }
 
   getAuto(): void {
+    if (sessionStorage.getItem('AuthRole') === 'ROLE_ADMIN') {
+      this.autosTable = configAuto;
+    }
+    else {
+      this.autosTable = configAutos;
+    }
     this.service.getAuto()
       .subscribe(autos =>  this.autos = autos );
     console.log(this.autos)

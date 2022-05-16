@@ -21,7 +21,7 @@ export class TokenService {
      let token = sessionStorage.getItem(TOKEN_KEY);
 
      if (token != null) {
-       authHeader = token;
+       authHeader = 'Bearer' + token;
      }
      return authHeader;
   }

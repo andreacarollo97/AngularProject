@@ -24,9 +24,13 @@ export class AuthappService {
 
 
 
-  loggedUser = () : string | null => (sessionStorage.getItem('email')) ? sessionStorage.getItem('email') : '';
+  loggedUser = () : string | null => (sessionStorage.getItem('AuthToken')) ? sessionStorage.getItem('AuthToken') : '';
 
   isLogged = () : boolean => !!(sessionStorage.getItem('AuthToken'));
+
+  isAdmin = () : boolean => (sessionStorage.getItem('AuthRole') === 'ROLE_ADMIN');
+
+  isUser = () : boolean => (sessionStorage.getItem('AuthRole') === 'ROLE_USER');
 
   //clearUser = () : void => sessionStorage.removeItem(('email'));
 
