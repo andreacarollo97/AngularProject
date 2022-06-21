@@ -6,13 +6,14 @@ export const configAutos: MyTableConfig = {
     {key: 'marca', label: 'Marca'},
     {key: 'modello', label: 'Modello'},
     {key: 'targa', label: 'Targa'},
+    {key: 'parcoAuto', label: 'ParcoAuto'},
   ],
   order: {
     defaultColumn: 'marca',
     orderType: 'asc'
   },
   search: {
-    columns: ['marca','modello','targa']
+    columns: ['marca','modello','targa','parcoAuto']
   },
   pagination: {
     itemForPage: 5,

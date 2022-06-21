@@ -15,6 +15,10 @@ import {AutoDisponibiliComponent} from "./pages/prenotazione/auto-disponibili/au
 import {RouteGuardServiceUser} from "./services/login/route-guard.serviceUser";
 import {WelcomeAdminComponent} from "./pages/welcome/welcome-admin/welcome-admin.component";
 import {WelcomeUserComponent} from "./pages/welcome/welcome-user/welcome-user.component";
+import {ParcoAutoPageComponent} from "./pages/parcoAuto/parco-auto-page/parco-auto-page.component";
+import {RouteGuardServiceSuper} from "./services/login/route-guard.serviceSuper";
+import {ParcoAutoDetailComponent} from "./pages/parcoAuto/parco-auto-detail/parco-auto-detail.component";
+import {WelcomeSuperComponent} from "./pages/welcome/welcome-super/welcome-super.component";
 
 
 
@@ -27,6 +31,7 @@ const routes: Routes = [
   { path: 'logout', component: LoginPageComponent, canActivate: [RouteGuardServiceUser]},
   { path: 'welcomeAdmin', component: WelcomeAdminComponent, canActivate: [RouteGuardServiceAdmin]},
   { path: 'welcomeUser', component: WelcomeUserComponent, canActivate: [RouteGuardServiceUser]},
+  { path: 'welcomeSuper', component: WelcomeSuperComponent, canActivate: [RouteGuardServiceSuper]},
 
   { path: 'user', component: UserPageComponent, canActivate: [RouteGuardServiceAdmin]},
   { path: 'user/detail/:id', component: UserDetailComponent, canActivate: [RouteGuardServiceAdmin]},
@@ -39,6 +44,10 @@ const routes: Routes = [
   { path: 'prenotazione', component: PrenotazionePageComponent , canActivate: [RouteGuardServiceUser]},
   { path: 'prenotazione/detail/:id', component: PrenotazioneDetailComponent , canActivate: [RouteGuardServiceAdmin]},
   { path: 'prenotazione/add', component: PrenotazioneDetailComponent, canActivate: [RouteGuardServiceAdmin]},
+
+  { path: 'parcoAuto', component: ParcoAutoPageComponent, canActivate: [RouteGuardServiceSuper]},
+  { path: 'parcoAuto/detail/:id', component: ParcoAutoDetailComponent, canActivate: [RouteGuardServiceSuper]},
+  { path: 'parcoAuto/add', component: ParcoAutoDetailComponent, canActivate: [RouteGuardServiceSuper] },
 
   { path: 'prenota', component: PrenotazioneUserComponent, canActivate:[RouteGuardServiceUser]},
   { path: 'listauto/:dataInizio/:dataFine', component: AutoDisponibiliComponent, canActivate:[RouteGuardServiceUser]},

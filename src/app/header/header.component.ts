@@ -10,7 +10,9 @@ import {AuthappService} from "../services/login/authapp.service";
 })
 export class HeaderComponent implements OnInit {
 
-  constructor(public authService: AuthappService) {
+  constructor(
+    public authService: AuthappService
+  ) {
   }
 
   ngOnInit(): void {

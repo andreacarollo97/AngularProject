@@ -23,6 +23,9 @@ import { AutoDisponibiliComponent } from './pages/prenotazione/auto-disponibili/
 import {InterceptorService} from "./services/login/interceptor.service";
 import { WelcomeAdminComponent } from './pages/welcome/welcome-admin/welcome-admin.component';
 import { WelcomeUserComponent } from './pages/welcome/welcome-user/welcome-user.component';
+import { ParcoAutoDetailComponent } from './pages/parcoAuto/parco-auto-detail/parco-auto-detail.component';
+import { WelcomeSuperComponent } from './pages/welcome/welcome-super/welcome-super.component';
+import { ParcoAutoPageComponent } from './pages/parcoAuto/parco-auto-page/parco-auto-page.component';
 
 
 
@@ -47,6 +50,9 @@ import { WelcomeUserComponent } from './pages/welcome/welcome-user/welcome-user.
     AutoDisponibiliComponent,
     WelcomeAdminComponent,
     WelcomeUserComponent,
+    ParcoAutoDetailComponent,
+    WelcomeSuperComponent,
+    ParcoAutoPageComponent,
   ],
     imports: [
         BrowserModule,
@@ -56,7 +62,11 @@ import { WelcomeUserComponent } from './pages/welcome/welcome-user/welcome-user.
         ReactiveFormsModule
     ],
   providers: [
-    {provide : HTTP_INTERCEPTORS, useClass : InterceptorService, multi : true}
+    {
+      provide : HTTP_INTERCEPTORS,
+      useClass : InterceptorService,
+      multi : true
+    }
   ],
   bootstrap: [AppComponent]
 })

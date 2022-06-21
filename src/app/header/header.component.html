@@ -8,6 +8,7 @@
       <li><a routerLink="/auto" *ngIf="authService.isLogged()">Auto</a></li>
       <li><a routerLink="/prenotazione" *ngIf="authService.isLogged()">Prenotazioni</a></li>
       <li><a routerLink="/prenota" *ngIf="authService.isLogged() && authService.isUser()">Prenota</a></li>
+      <li><a routerLink="/parcoAuto" *ngIf="authService.isLogged() && authService.isSuper()">ParchiAuto</a></li>
       <li><a routerLink="/logout" *ngIf="authService.isLogged()" (click)="authService.clearAll()">Logout</a></li>
       <li><a routerLink="/login" disabled *ngIf="!authService.isLogged()">Login</a></li>
     </ul>

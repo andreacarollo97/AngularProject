@@ -10,12 +10,6 @@ import {Auto} from "../../model/auto";
 })
 export class AutosService {
 
-  private autoUrl = 'api/auto';  // URL to web api
-
-  httpOptions = {
-    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
-  };
-
   constructor(
     private http: HttpClient
   ) { }
@@ -33,7 +27,6 @@ export class AutosService {
 
   ottieniAuto(id : number) : Observable<Auto> {
     return this.http.get<Auto>(this.url+'/detail/'+id);
-
   }
 
   editAuto(auto : Auto) : Observable<Auto> {

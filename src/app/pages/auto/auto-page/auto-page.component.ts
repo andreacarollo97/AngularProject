@@ -5,6 +5,8 @@ import { ActivatedRoute, Router } from "@angular/router";
 import { AutosService } from "../../../services/auto/auto.service";
 import {MyTableConfig} from "../../../config/table/MyTableConfig";
 import {configAutos} from "../../../config/page/configAutos";
+import {ParcoAutoPageComponent} from "../../parcoAuto/parco-auto-page/parco-auto-page.component";
+import {ParcoAuto} from "../../../model/parcoAuto";
 
 @Component({
   selector: 'app-auto-page',
@@ -14,6 +16,7 @@ import {configAutos} from "../../../config/page/configAutos";
 export class AutoPageComponent implements OnInit {
 
   autos : Auto[] = [];
+  parcoAuto !: ParcoAuto;
   autosTable !: MyTableConfig;
 
 
@@ -59,7 +62,9 @@ export class AutoPageComponent implements OnInit {
       this.autosTable = configAutos;
     }
     this.service.getAuto()
-      .subscribe(autos =>  this.autos = autos );
+      .subscribe(autos => {
+        this.autos = autos;
+      });
     console.log(this.autos)
   }
 

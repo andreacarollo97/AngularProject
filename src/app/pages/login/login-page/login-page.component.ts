@@ -36,6 +36,8 @@ export class LoginPageComponent implements OnInit {
         this.router.navigate(['welcomeUser']).then(r =>'');
         else if(data.ruolo === 'ROLE_ADMIN')
           this.router.navigate(['welcomeAdmin']).then(r =>'');
+        else if(data.ruolo === 'ROLE_SUPER')
+          this.router.navigate(['welcomeSuper']).then(r =>'');
         else
           this.router.navigate(['']).then(r => '');
       }

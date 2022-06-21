@@ -1,0 +1,11 @@
+<div class= container>
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <input type="text" name="nome" placeholder="nome" formControlName="nome"/><br>
+    <input type="text" name="cittadina"  placeholder="città" formControlName="cittadina"/><br>
+    <input type="text" name="indirizzo"  placeholder="indirizzo" formControlName="indirizzo"/><br>
+    <div>
+      <button (click)="goBack()">Annulla</button>
+      <button type="submit" [disabled]="!form.valid">Submit</button>
+    </div>
+  </form>
+</div>
