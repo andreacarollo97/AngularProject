@@ -25,7 +25,8 @@ export class UserDetailComponent implements OnInit {
     private service: UsersService,
     private location : Location,
     public fb: FormBuilder
-  ) {
+  )
+  {
     this.form = fb.group({
       'nome': ['', Validators.required],
       'cognome': ['', Validators.required],
@@ -74,10 +75,6 @@ export class UserDetailComponent implements OnInit {
     this.service.editUser(this.user)
       .subscribe(response => this.router.navigate(['user']))
   }
-
-
-
-
 
   goBack(): void {
     this.location.back();

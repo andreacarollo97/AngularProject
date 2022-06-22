@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
 import {Location} from '@angular/common';
-import {Auto} from "../../../model/auto";
 import {AutosService} from "../../../services/auto/auto.service";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {EditAuto} from "../../../model/editAuto";
 
 @Component({
   selector: 'app-auto-detail',
@@ -12,9 +12,10 @@ import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 })
 export class AutoDetailComponent implements OnInit {
 
-  auto !: Auto;
+  auto !: any;
   form !: FormGroup;
-  autoId !: number;
+  autoId ?: number;
+
 
   constructor(
     private router: Router,
@@ -33,43 +34,43 @@ export class AutoDetailComponent implements OnInit {
   ngOnInit(): void {
     this.activateRouter.params
       .subscribe(params => {
-        let id: number = params['id'];
-        if (id) {
-          this.service.ottieniAuto(id)
+        this.autoId  = params['id'];
+        if (this.autoId) {
+          this.service.ottieniAuto(this.autoId)
             .subscribe(response => {
-              this.auto = response ;
-              this.autoId = Number(this.auto.id);
-              delete this.auto.id;
+              this.auto = {
+                targa : response.targa,
+                marca : response.marca,
+                modello : response.modello
+              };
               this.form.setValue(this.auto)
             });
 
+        }
+        else {
+          this.auto = {
+            id : undefined,
+            targa : '',
+            marca : '',
+            modello : ''
+          }
         }
       })
   }
 
 
   onSubmit(){
-    this.auto = this.form.value;
-    if(!this.autoId){
       this.salvaAuto();
-    }
-    else{
-      if (this.auto) {
-        this.auto.id = this.autoId;
-        this.editAuto()
-      }
-    }
   }
 
   salvaAuto() {
-    this.service.salvaAuto(this.auto)
+    let request = this.form.value;
+    request.id = this.autoId;
+    console.log(request);
+    this.service.salvaAuto(request)
       .subscribe(response => this.router.navigate(['auto']))
   }
 
-  editAuto() {
-    this.service.editAuto(this.auto)
-      .subscribe(response => this.router.navigate(['auto']))
-  }
 
 
   goBack(): void {
