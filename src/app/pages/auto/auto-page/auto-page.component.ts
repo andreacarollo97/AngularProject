@@ -5,7 +5,6 @@ import { ActivatedRoute, Router } from "@angular/router";
 import { AutosService } from "../../../services/auto/auto.service";
 import {MyTableConfig} from "../../../config/table/MyTableConfig";
 import {configAutos} from "../../../config/page/configAutos";
-import {ParcoAutoPageComponent} from "../../parcoAuto/parco-auto-page/parco-auto-page.component";
 import {ParcoAuto} from "../../../model/parcoAuto";
 
 @Component({
@@ -55,17 +54,21 @@ export class AutoPageComponent implements OnInit {
   }
 
   getAuto(): void {
-    if (sessionStorage.getItem('AuthRole') === 'ROLE_ADMIN') {
+    if (sessionStorage.getItem('AuthRole') !== 'ROLE_USER') {
       this.autosTable = configAuto;
+      this.service.getAuto()
+        .subscribe(autos => {
+          this.autos = autos;
+        });
     }
     else {
       this.autosTable = configAutos;
+      this.service.getAutoAssegnate()
+        .subscribe(autos => {
+          this.autos = autos;
+        });
     }
-    this.service.getAuto()
-      .subscribe(autos => {
-        this.autos = autos;
-      });
-    console.log(this.autos)
+
   }
 
 

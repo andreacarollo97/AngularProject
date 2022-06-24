@@ -19,6 +19,7 @@ import {ParcoAutoPageComponent} from "./pages/parcoAuto/parco-auto-page/parco-au
 import {RouteGuardServiceSuper} from "./services/login/route-guard.serviceSuper";
 import {ParcoAutoDetailComponent} from "./pages/parcoAuto/parco-auto-detail/parco-auto-detail.component";
 import {WelcomeSuperComponent} from "./pages/welcome/welcome-super/welcome-super.component";
+import {RouteGuardServiceSuperOrAdmin} from "./services/login/route-guard.serviceSuperOrAdmin";
 
 
 
@@ -33,13 +34,13 @@ const routes: Routes = [
   { path: 'welcomeUser', component: WelcomeUserComponent, canActivate: [RouteGuardServiceUser]},
   { path: 'welcomeSuper', component: WelcomeSuperComponent, canActivate: [RouteGuardServiceSuper]},
 
-  { path: 'user', component: UserPageComponent, canActivate: [RouteGuardServiceAdmin]},
-  { path: 'user/detail/:id', component: UserDetailComponent, canActivate: [RouteGuardServiceAdmin]},
-  { path: 'user/add', component: UserDetailComponent, canActivate: [RouteGuardServiceAdmin]},
+  { path: 'user', component: UserPageComponent, canActivate: [RouteGuardServiceSuperOrAdmin]},
+  { path: 'user/detail/:id', component: UserDetailComponent, canActivate: [RouteGuardServiceSuperOrAdmin]},
+  { path: 'user/add', component: UserDetailComponent, canActivate: [RouteGuardServiceSuperOrAdmin]},
 
   { path: 'auto', component: AutoPageComponent, canActivate: [RouteGuardServiceUser]},
-  { path: 'auto/detail/:id', component: AutoDetailComponent, canActivate: [RouteGuardServiceAdmin]},
-  { path: 'auto/add', component: AutoDetailComponent, canActivate: [RouteGuardServiceAdmin] },
+  { path: 'auto/detail/:id', component: AutoDetailComponent, canActivate: [RouteGuardServiceSuperOrAdmin]},
+  { path: 'auto/add', component: AutoDetailComponent, canActivate: [RouteGuardServiceSuperOrAdmin] },
 
   { path: 'prenotazione', component: PrenotazionePageComponent , canActivate: [RouteGuardServiceUser]},
   { path: 'prenotazione/detail/:id', component: PrenotazioneDetailComponent , canActivate: [RouteGuardServiceAdmin]},

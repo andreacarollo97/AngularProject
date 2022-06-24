@@ -3,6 +3,7 @@ import { User } from "../../../model/user";
 import { configUser } from "../../../config/page/configUser";
 import { ActivatedRoute, Router } from "@angular/router";
 import { UsersService } from "../../../services/users/users.service";
+import {AuthappService} from "../../../services/login/authapp.service";
 
 @Component({
   selector: 'app-user-page',
@@ -15,7 +16,9 @@ export class UserPageComponent implements OnInit {
   usersTable = configUser;
 
 
+
   constructor(
+    private authService : AuthappService,
     private service: UsersService,
     private router: Router,
     private route: ActivatedRoute,
@@ -48,8 +51,14 @@ export class UserPageComponent implements OnInit {
   }
 
   getUsers(): void {
-    this.service.getUsers()
-      .subscribe(users =>  this.users = users );
+    if(this.authService.isLogged() && sessionStorage.getItem('AuthRole') === 'ROLE_ADMIN'){
+        this.service.getUsersWhenAdmin('ROLE_SUPER')
+          .subscribe(users => this.users = users);
+    }
+      else {
+        this.service.getUsers()
+          .subscribe(users =>  this.users = users);
+      }
   }
 
 

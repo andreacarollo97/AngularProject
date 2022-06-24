@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import {User} from "../../../model/user";
 import {ActivatedRoute, Router} from "@angular/router";
 import {UsersService} from "../../../services/users/users.service";
 import {Location} from '@angular/common';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+
 
 
 @Component({
@@ -13,11 +13,11 @@ import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 })
 export class UserDetailComponent implements OnInit {
 
-  user !: User;
-  users : User[] = [];
-
+  user !: any;
   form !: FormGroup;
   userId !: number;
+
+
 
   constructor(
     private router: Router,
@@ -32,49 +32,54 @@ export class UserDetailComponent implements OnInit {
       'cognome': ['', Validators.required],
       'email': ['', Validators.email],
       'password': ['', Validators.minLength(6)],
-      'ruolo': ['ROLE_USER', Validators.required],
+      'ruolo': ['', Validators.required],
     })
   }
 
   ngOnInit(): void {
     this.activateRouter.params
       .subscribe(params => {
-        let id: number = params['id'];
-        if (id) {
-          this.service.ottieniUser(id)
+        this.userId = params['id'];
+        if (this.userId) {
+          this.service.ottieniUser(this.userId)
             .subscribe(response => {
-              this.user = response ;
-              this.userId = Number(this.user.id);
-              delete this.user.id;
+              this.user = {
+                nome : response.nome,
+                cognome : response.cognome,
+                password : '',
+                email : response.email,
+                ruolo : response.ruolo
+              };
+              console.log(response);
               this.form.setValue(this.user)
             });
 
         }
+        else {
+          this.user = {
+            id : undefined,
+            cognome : '',
+            email : '',
+            password : '',
+            ruolo : ''
+          }
+        }
       })
   }
 
+
+
   onSubmit(){
-    this.user = this.form.value;
-    if(!this.userId){
       this.salvaUser();
-    }
-    else{
-      if (this.user) {
-        this.user.id = this.userId;
-        this.editUser();
-      }
-    }
   }
 
   salvaUser() {
-    this.service.salvaUser(this.user)
+    let request = this.form.value;
+    request.id = this.userId;
+    this.service.salvaUser(request)
       .subscribe(response => this.router.navigate(['user']))
   }
 
-  editUser() {
-    this.service.editUser(this.user)
-      .subscribe(response => this.router.navigate(['user']))
-  }
 
   goBack(): void {
     this.location.back();

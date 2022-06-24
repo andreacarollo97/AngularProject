@@ -3,8 +3,7 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {Prenotazione} from "../../../model/prenotazione";
 import {configPrenotazione} from "../../../config/page/configPrenotazione";
 import {PrenotazioniService} from "../../../services/prenotazioni/prenotazioni.service";
-import * as _ from "lodash";
-import {MyTableComponent} from "../../../my-table/my-table.component";
+
 import {MyTableConfig} from "../../../config/table/MyTableConfig";
 import {configPrenotazioni} from "../../../config/page/configPrenotazioni";
 

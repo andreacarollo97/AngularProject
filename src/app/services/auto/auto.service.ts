@@ -20,6 +20,15 @@ export class AutosService {
   getAuto(): Observable<Auto[]> {
     return this.http.get<Auto[]>(this.url+'/elenco/');
   }
+  /*
+  getAutoLibere(): Observable<Auto[]> {
+    return this.http.get<Auto[]>(this.url+'/elenco/');
+  }
+  */
+
+  getAutoAssegnate(): Observable<Auto[]> {
+    return this.http.get<Auto[]>(this.url+'/elencoAutoAssegnate/');
+  }
 
   salvaAuto(auto : EditAuto) : Observable<any>{
     return this.http.post<EditAuto>(this.url+'/salva',auto)
@@ -28,7 +37,6 @@ export class AutosService {
   ottieniAuto(id : number) : Observable<Auto> {
     return this.http.get<Auto>(this.url+'/detail/'+id);
   }
-
 
   eliminaAuto(id : number): Observable<any> {
     return this.http.delete<any>(this.url+'/elimina/'+id);
