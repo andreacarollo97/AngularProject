@@ -26,6 +26,8 @@ import { WelcomeUserComponent } from './pages/welcome/welcome-user/welcome-user.
 import { ParcoAutoDetailComponent } from './pages/parcoAuto/parco-auto-detail/parco-auto-detail.component';
 import { WelcomeSuperComponent } from './pages/welcome/welcome-super/welcome-super.component';
 import { ParcoAutoPageComponent } from './pages/parcoAuto/parco-auto-page/parco-auto-page.component';
+import { AutoPageSuperComponent } from './pages/auto/auto-page-super/auto-page-super.component';
+import { AutoDetailAssociateComponent } from './pages/auto/auto-detail-associate/auto-detail-associate.component';
 
 
 
@@ -53,6 +55,8 @@ import { ParcoAutoPageComponent } from './pages/parcoAuto/parco-auto-page/parco-
     ParcoAutoDetailComponent,
     WelcomeSuperComponent,
     ParcoAutoPageComponent,
+    AutoPageSuperComponent,
+    AutoDetailAssociateComponent,
   ],
     imports: [
         BrowserModule,

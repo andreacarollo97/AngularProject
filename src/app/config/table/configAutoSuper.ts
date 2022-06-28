@@ -1,7 +1,11 @@
-import {MyTableConfig} from "../table/MyTableConfig";
+import {MyTableConfig} from "./MyTableConfig";
+import {configButtonDELETE} from "../button/configButtonDELETE";
+import {configButtonASSOCIATE} from "../button/configButtonASSOCIATE";
+import {configButtonSELECT} from "../button/configButtonSELECT";
 
 
-export const configAutos: MyTableConfig = {
+
+export const configAutoSuper: MyTableConfig = {
   headers: [
     {key: 'marca', label: 'Marca'},
     {key: 'modello', label: 'Modello'},
@@ -20,5 +24,6 @@ export const configAutos: MyTableConfig = {
     itemForPageOptions: [5, 10, 15, 25]
   },
   action: [
+   configButtonSELECT,configButtonDELETE
   ]
 }

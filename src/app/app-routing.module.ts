@@ -20,6 +20,8 @@ import {RouteGuardServiceSuper} from "./services/login/route-guard.serviceSuper"
 import {ParcoAutoDetailComponent} from "./pages/parcoAuto/parco-auto-detail/parco-auto-detail.component";
 import {WelcomeSuperComponent} from "./pages/welcome/welcome-super/welcome-super.component";
 import {RouteGuardServiceSuperOrAdmin} from "./services/login/route-guard.serviceSuperOrAdmin";
+import {AutoPageSuperComponent} from "./pages/auto/auto-page-super/auto-page-super.component";
+import {AutoDetailAssociateComponent} from "./pages/auto/auto-detail-associate/auto-detail-associate.component";
 
 
 
@@ -39,7 +41,9 @@ const routes: Routes = [
   { path: 'user/add', component: UserDetailComponent, canActivate: [RouteGuardServiceSuperOrAdmin]},
 
   { path: 'auto', component: AutoPageComponent, canActivate: [RouteGuardServiceUser]},
+  { path: 'autoLibere', component : AutoPageSuperComponent, canActivate: [RouteGuardServiceSuper]},
   { path: 'auto/detail/:id', component: AutoDetailComponent, canActivate: [RouteGuardServiceSuperOrAdmin]},
+  { path: 'autoLibere/selected/:id', component: AutoDetailAssociateComponent, canActivate: [RouteGuardServiceSuper]},
   { path: 'auto/add', component: AutoDetailComponent, canActivate: [RouteGuardServiceSuperOrAdmin] },
 
   { path: 'prenotazione', component: PrenotazionePageComponent , canActivate: [RouteGuardServiceUser]},

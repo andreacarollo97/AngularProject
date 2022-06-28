@@ -2,11 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import {Auto} from "../../../model/auto";
 
 import {ActivatedRoute, Router} from "@angular/router";
-import {configListAuto} from "../../../config/page/configListAuto";
+import {configListAuto} from "../../../config/table/configListAuto";
 import {PrenotazioniService} from "../../../services/prenotazioni/prenotazioni.service";
 import {Prenotazione} from "../../../model/prenotazione";
 import {User} from "../../../model/user";
-import {configUser} from "../../../config/page/configUser";
+import {configUser} from "../../../config/table/configUser";
 import {TokenService} from "../../../services/login/token.service";
 import {UsersService} from "../../../services/users/users.service";
 

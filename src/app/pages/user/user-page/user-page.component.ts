@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from "../../../model/user";
-import { configUser } from "../../../config/page/configUser";
+import { configUser } from "../../../config/table/configUser";
 import { ActivatedRoute, Router } from "@angular/router";
 import { UsersService } from "../../../services/users/users.service";
 import {AuthappService} from "../../../services/login/authapp.service";

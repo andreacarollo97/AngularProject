@@ -3,6 +3,7 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {UsersService} from "../../../services/users/users.service";
 import {Location} from '@angular/common';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {AuthappService} from "../../../services/login/authapp.service";
 
 
 
@@ -20,6 +21,7 @@ export class UserDetailComponent implements OnInit {
 
 
   constructor(
+    public authService : AuthappService,
     private router: Router,
     private activateRouter: ActivatedRoute,
     private service: UsersService,

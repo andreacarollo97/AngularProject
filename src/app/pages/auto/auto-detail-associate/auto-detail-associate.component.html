@@ -1,0 +1,7 @@
+<div class= container>
+  <h3>Auto Selezionata:</h3>
+  <div *ngFor="let elem of autoElement">
+    <h4>{{elem}}</h4>
+  </div>
+</div>
+<app-my-table [tableConfig]="autosTable" [data]="parchiAuto" (eventEmitter)="btnClicked($event)"></app-my-table>

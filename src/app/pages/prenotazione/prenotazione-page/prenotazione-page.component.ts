@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
 import {Prenotazione} from "../../../model/prenotazione";
-import {configPrenotazione} from "../../../config/page/configPrenotazione";
+import {configPrenotazione} from "../../../config/table/configPrenotazione";
 import {PrenotazioniService} from "../../../services/prenotazioni/prenotazioni.service";
 
 import {MyTableConfig} from "../../../config/table/MyTableConfig";
-import {configPrenotazioni} from "../../../config/page/configPrenotazioni";
+import {configPrenotazioni} from "../../../config/table/configPrenotazioni";
 
 @Component({
   selector: 'app-prenotazione-page',

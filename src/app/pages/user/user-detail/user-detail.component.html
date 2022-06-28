@@ -5,12 +5,12 @@
     <input type="text" name="cognome"  placeholder="cognome" formControlName="cognome"/><br>
     <input type="text" name="email"  placeholder="e-mail" formControlName="email"/><br>
     <input type="text" name="password"  placeholder="password" formControlName="password"/><br>
-    <input list="ruoli" name="ruolo" id="ruolo" formControlName="ruolo">
-    <datalist id="ruoli">
-      <option value="ROLE_USER">
-      <option value="ROLE_ADMIN">
-      <option value="ROLE_SUPER">
-    </datalist>
+    <label for="ruolo">Ruolo: </label>
+    <select name="ruolo" id="ruolo" formControlName="ruolo">
+      <option value="ROLE_USER">USER</option>
+      <option value="ROLE_ADMIN">ADMIN</option>
+      <option [disabled]="!authService.isSuper()"value="ROLE_SUPER">SUPER</option>
+    </select>
     <div>
       <button (click)="goBack()">Annulla</button>
       <button type="submit" [disabled]="!form.valid">Submit</button>

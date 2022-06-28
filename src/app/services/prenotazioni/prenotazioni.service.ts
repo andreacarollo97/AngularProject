@@ -50,7 +50,7 @@ export class PrenotazioniService {
   }
 
   listaAutoDisponibili(dataInizio : string, dataFine : string): Observable<Auto[]> {
-    return this.http.get<Auto[]>(this.url+'/listauto/?dataInizio='+dataInizio+'&dataFine='+dataFine);
+    return this.http.get<Auto[]>(`${this.url}/listauto/?dataInizio=${dataInizio}&dataFine=${dataFine}`);
   }
 
 

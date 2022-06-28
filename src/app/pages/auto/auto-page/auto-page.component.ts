@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Auto } from "../../../model/auto";
-import { configAuto } from "../../../config/page/configauto";
+import { configAuto } from "../../../config/table/configAuto";
 import { ActivatedRoute, Router } from "@angular/router";
 import { AutosService } from "../../../services/auto/auto.service";
 import {MyTableConfig} from "../../../config/table/MyTableConfig";
-import {configAutos} from "../../../config/page/configAutos";
+import {configAutoUser} from "../../../config/table/configAutoUser";
 import {ParcoAuto} from "../../../model/parcoAuto";
 
 @Component({
@@ -62,7 +62,7 @@ export class AutoPageComponent implements OnInit {
         });
     }
     else {
-      this.autosTable = configAutos;
+      this.autosTable = configAutoUser;
       this.service.getAutoAssegnate()
         .subscribe(autos => {
           this.autos = autos;

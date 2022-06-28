@@ -1,9 +1,10 @@
-import {MyTableConfig} from "../table/MyTableConfig";
+import {MyTableConfig} from "./MyTableConfig";
 import {configButtonADD} from "../button/configButtonADD";
 import {configButtonEDIT} from "../button/configButtonEDIT";
 import {configButtonDELETE} from "../button/configButtonDELETE";
+import {configButtonASSOCIATE} from "../button/configButtonASSOCIATE";
 
-export const configParco: MyTableConfig = {
+export const configParcoAssociate: MyTableConfig = {
   headers: [
     {key: 'nome', label: 'Nome'},
     {key: 'cittadina', label: 'Città'},
@@ -21,6 +22,6 @@ export const configParco: MyTableConfig = {
     itemForPageOptions: [5, 10, 15, 25]
   },
   action: [
-    configButtonADD, configButtonEDIT, configButtonDELETE
+    configButtonASSOCIATE
   ]
 }

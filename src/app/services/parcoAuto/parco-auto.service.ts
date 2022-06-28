@@ -47,8 +47,8 @@ export class ParcoAutoService {
     return this.http.delete<any>(this.url+'/elimina/'+id);
   }
 
-  associaAuto(idAuto : string, idParcoAuto : string): Observable<any> {
-    return this.http.post<any>(this.url+'/associate/?idParcoAuto='+idParcoAuto+'&idAuto='+idAuto,true);
+  associaAuto(idAuto : number, idParcoAuto : number): Observable<any> {
+    return this.http.post<any>(this.url+'/associate',{idParcoAuto : idParcoAuto, idAuto : idAuto});
   }
 
 

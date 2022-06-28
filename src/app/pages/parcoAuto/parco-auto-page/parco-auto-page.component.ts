@@ -1,12 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import {Auto} from "../../../model/auto";
-import {MyTableConfig} from "../../../config/table/MyTableConfig";
-import {AutosService} from "../../../services/auto/auto.service";
+import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
-import {configAutos} from "../../../config/page/configAutos";
 import {ParcoAuto} from "../../../model/parcoAuto";
 import {ParcoAutoService} from "../../../services/parcoAuto/parco-auto.service";
-import {configParco} from "../../../config/page/configParco";
+import {configParco} from "../../../config/table/configParco";
 
 @Component({
   selector: 'app-parco-auto-page',

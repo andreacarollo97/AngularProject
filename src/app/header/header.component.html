@@ -6,6 +6,7 @@
     <ul class="nav navbar-nav">
       <li><a routerLink="/user" *ngIf="(authService.isLogged() && !authService.isUser())">Users</a></li>
       <li><a routerLink="/auto" *ngIf="authService.isLogged()">Auto</a></li>
+      <li><a routerLink="/autoLibere" *ngIf="authService.isLogged() && authService.isSuper()">Auto-Libere</a></li>
       <li><a routerLink="/prenotazione" *ngIf="authService.isLogged() && (authService.isAdmin() || authService.isUser())">Prenotazioni</a></li>
       <li><a routerLink="/prenota" *ngIf="authService.isLogged() && authService.isUser()">Prenota</a></li>
       <li><a routerLink="/parcoAuto" *ngIf="authService.isLogged() && authService.isSuper()">ParchiAuto</a></li>

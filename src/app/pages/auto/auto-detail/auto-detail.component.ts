@@ -3,7 +3,7 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {Location} from '@angular/common';
 import {AutosService} from "../../../services/auto/auto.service";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {EditAuto} from "../../../model/editAuto";
+
 
 @Component({
   selector: 'app-auto-detail',
@@ -66,7 +66,6 @@ export class AutoDetailComponent implements OnInit {
   salvaAuto() {
     let request = this.form.value;
     request.id = this.autoId;
-    console.log(request);
     this.service.salvaAuto(request)
       .subscribe(response => this.router.navigate(['auto']))
   }
