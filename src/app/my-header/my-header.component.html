@@ -1,0 +1,10 @@
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" routerLink="/home">Rental CAR</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li *ngFor="let item of headerConfig.item"><a (click)="onClick(item.link)">{{item.element}}</a></li>
+    </ul>
+  </div>
+</nav>

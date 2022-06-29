@@ -7,7 +7,6 @@ import { MyTableComponent } from './my-table/my-table.component';
 import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { AppRoutingModule } from './app-routing.module';
-import { HeaderComponent } from './header/header.component';
 import { UserPageComponent } from './pages/user/user-page/user-page.component';
 import { PrenotazionePageComponent } from './pages/prenotazione/prenotazione-page/prenotazione-page.component';
 
@@ -28,6 +27,7 @@ import { WelcomeSuperComponent } from './pages/welcome/welcome-super/welcome-sup
 import { ParcoAutoPageComponent } from './pages/parcoAuto/parco-auto-page/parco-auto-page.component';
 import { AutoPageSuperComponent } from './pages/auto/auto-page-super/auto-page-super.component';
 import { AutoDetailAssociateComponent } from './pages/auto/auto-detail-associate/auto-detail-associate.component';
+import { MyHeaderComponent } from './my-header/my-header.component';
 
 
 
@@ -39,7 +39,6 @@ import { AutoDetailAssociateComponent } from './pages/auto/auto-detail-associate
     AppComponent,
     MyButtonComponent,
     MyTableComponent,
-    HeaderComponent,
     UserPageComponent,
     PrenotazionePageComponent,
     AutoPageComponent,
@@ -57,6 +56,7 @@ import { AutoDetailAssociateComponent } from './pages/auto/auto-detail-associate
     ParcoAutoPageComponent,
     AutoPageSuperComponent,
     AutoDetailAssociateComponent,
+    MyHeaderComponent,
   ],
     imports: [
         BrowserModule,

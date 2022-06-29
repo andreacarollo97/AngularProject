@@ -23,6 +23,7 @@ export class LoginPageComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+
   }
 
   onLogin() : void {
@@ -32,6 +33,9 @@ export class LoginPageComponent implements OnInit {
         this.tokenService.setToken(data.token);
         this.tokenService.setRuolo(data.ruolo);
         this.tokenService.setID(data.id);
+
+        this.authService.subject.next(data.ruolo);
+
         if(data.ruolo === 'ROLE_USER')
         this.router.navigate(['welcomeUser']).then(r =>'');
         else if(data.ruolo === 'ROLE_ADMIN')
@@ -40,6 +44,7 @@ export class LoginPageComponent implements OnInit {
           this.router.navigate(['welcomeSuper']).then(r =>'');
         else
           this.router.navigate(['']).then(r => '');
+
       }
     )
   }

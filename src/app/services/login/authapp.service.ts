@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
-import {Observable} from "rxjs";
+import {Observable, Subject} from "rxjs";
 import {UsersService} from "../users/users.service";
 import {LogUser} from "../../model/logUser";
 import {Token} from "../../model/token";
@@ -12,6 +12,8 @@ export class AuthappService {
 
   authURL = 'http://localhost:8080/api/auth/';
 
+  subject = new Subject<string | undefined | null >()
+
   constructor(private httpClient : HttpClient, private usersService : UsersService) {
 
   }
@@ -21,8 +23,10 @@ export class AuthappService {
     return this.httpClient.post<Token>(this.authURL + 'login',logUser)
   }
 
-
-
+  public logOut() : void {
+    this.clearAll();
+    this.subject.next(this.loggedUser());
+  }
 
   loggedUser = () : string | null => (sessionStorage.getItem('AuthToken')) ? sessionStorage.getItem('AuthToken') : '';
 

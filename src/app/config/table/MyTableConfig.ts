@@ -14,6 +14,11 @@ export interface MySearch {
   columns : string [];
 }
 
+export class MyPagination {
+  itemForPage !: number;
+  itemForPageOptions !: number[];
+}
+
 export interface MyTableConfig {
   headers : MyHeaders [];
   order : MyOrder;
@@ -21,11 +26,4 @@ export interface MyTableConfig {
   pagination : MyPagination;
   action : MyButtonConfig[];
 }
-
-export class MyPagination {
-  itemForPage !: number;
-  itemForPageOptions !: number[];
-}
-
-
 

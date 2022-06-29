@@ -91,7 +91,6 @@ export class AutoDetailAssociateComponent implements OnInit {
   associaAuto(idAuto : number, idParcoAuto : number) {
     this.parcoService.associaAuto(idParcoAuto,idAuto)
       .subscribe({
-        next: res => console.log(res)
       })
   }
 
